@@ -1,24 +1,26 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import {firebase} from './firebaseConfig';
 
 function App() {
+	const db = firebase.firestore();
+	const firebaseTest = () => {
+		db.collection("cities").doc("LA").set({
+			name: "Los Angeles",
+			state: "CA",
+			country: "USA"
+		})
+		.then(function() {
+			console.log("Document successfully written!");
+		})
+		.catch(function(error) {
+			console.error("Error writing document: ", error);
+		});		
+	}
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <button onClick = {firebaseTest}>Prueba</button>
     </div>
   );
 }
