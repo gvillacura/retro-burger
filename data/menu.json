@@ -1,0 +1,73 @@
+{
+  "Almuerzo": [{
+      "nombre": "Hamburguesa Simple",
+      "precio": "$5.990"
+    },
+    {
+      "nombre": "Hamburguesa Doble",
+      "precio": "$7.990"
+    },
+    {
+      "nombre": "Papas Fritas",
+      "precio": "$1.990"
+    },
+    {
+      "nombre": "Aros de Cebolla",
+      "precio": "$1.990"
+    },
+    {
+      "nombre": "Agua Gasificada",
+      "precio": "$700"
+    },
+    {
+      "nombre": "Agua sin gas",
+      "precio": "$500"
+    },
+    {
+      "nombre": "Milkshake Chocolate",
+      "precio": "$2.200"
+    },
+    {
+      "nombre": "Milkshake Fresa",
+      "precio": "$2.200"
+    }
+  ],
+  "Desayuno": [{
+      "nombre": "Pancakes",
+      "precio": "$2.000"
+    },
+    {
+      "nombre": "Tostadas con huevo",
+      "precio": "$1.990"
+    },
+    {
+      "nombre": "Cafe americano",
+      "precio": "$1.000"
+    },
+    {
+      "nombre": "Café con leche",
+      "precio": "$1.200"
+    },
+    {
+      "nombre": "Agua Gasificada",
+      "precio": "$700"
+    },
+    {
+      "nombre": "Agua sin gas",
+      "precio": "$500"
+    },
+    {
+      "nombre": "Milkshake Chocolate",
+      "precio": "$2.200"
+    },
+    {
+      "nombre": "Milkshake Fresa",
+      "precio": "$2.200"
+    }
+  ],
+  "proteina": ["Res", "Pollo", "Vegana"],
+  "agregado": {
+    "huevo": ["Huevo", "$800"],
+    "queso": ["Queso", "$500"]
+  }
+}

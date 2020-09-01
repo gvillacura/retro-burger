@@ -1,28 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import {firebase} from './firebaseConfig';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import { View } from './components/InitialView.js';
+import { Tables } from './components/TablesView.js';
+import { Menu } from './components/MenuView.js'
 
-function App() {
-	const db = firebase.firestore();
-	const firebaseTest = () => {
-		db.collection("cities").doc("LA").set({
-			name: "Los Angeles",
-			state: "CA",
-			country: "USA"
-		})
-		.then(function() {
-			console.log("Document successfully written!");
-		})
-		.catch(function(error) {
-			console.error("Error writing document: ", error);
-		});		
-	}
-  return (
-    <div>
-      <button onClick = {firebaseTest}>Prueba</button>
-    </div>
+class App extends React.Component {
+  render(){
+    return (
+    <Router>   
+      <Switch>
+        <Route exact path="/">
+          <View />
+        </Route>
+        <Route exact path="/mesero">
+          <Tables />
+        </Route>
+        <Route exact path="/mesero/mesa">
+          <Menu />
+        </Route>
+      </Switch>
+    </Router>
   );
+  };
 }
-
 export default App;
+
