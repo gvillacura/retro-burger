@@ -30,21 +30,46 @@ export class Menu extends React.Component {
         <button onClick={this.handleClickLunch}>Almuerzo</button>
         <button onClick={this.handleClickBreakfast}>Desayuno</button>
         {allFood}
+        <ChooseMenu />
       </div> 
     );
   }
 }
+export class ChooseMenu extends React.Component {
+    constructor(props){
+      super(props);
+      this.handleClickIngredients=this.handleClickIngredients.bind(this);
+      this.state={optionIngredients: false};
+    }
+    handleClickIngredients(){
+      this.setState({optionIngredients: true})
+    }
+    render() {
+      let allIngredients;
+  
+      if(this.state.optionIngredients){
+        allIngredients= <SubMenu />
+      }
+      else{
+        allIngredients= ""
+      }
+      return ( 
+        <div>
+            <button onClick={this.handleClickIngredients} className="">{Almuerzo[0].nombre}<br/>
+            {Almuerzo[0].precio}</button>
+            <button onClick={this.handleClickIngredients} className="">{Almuerzo[1].nombre}<br/>
+            {Almuerzo[1].precio}</button>
+            {allIngredients}
+        </div> 
+      );
+    }
+  }
 
 class MenuAlmuerzo extends React.Component {
   render() {
     return(
       <div>
-        <button className="">{Almuerzo[0].nombre}<br/>
-        {Almuerzo[0].precio}</button>
-        <SubMenu />
-        <button className="">{Almuerzo[1].nombre}<br/>
-        {Almuerzo[1].precio}</button>
-        <SubMenu />
+        <ChooseMenu/>
         <button className="">{Almuerzo[2].nombre}<br/>
         {Almuerzo[2].precio}</button>
         <button className="">{Almuerzo[3].nombre}<br/>
