@@ -7,9 +7,13 @@ import bell from '../media/bell-off.png'
 export class ContentHeader extends React.Component{
   render(){
     return(
-      <header className=""> 
-        <img src={logo} className="" alt="logo" />
-        <img src={bell} className="" alt="logo" />
+      <header className="header">
+        <div className="containerLogo">
+          <img src={logo} className="logo" alt="logo" />
+        </div>
+        <div className="containerBellOf">
+          <img src={bell} className="bellOff" alt="bell" />
+        </div>
       </header>
     );  
   }
@@ -20,8 +24,10 @@ export class View extends React.Component {
     return ( 
       <div>
         <ContentHeader />
-        <Link to="/mesero"><button className="">Mesero</button></Link>
-        <Link to="/cocinero"><button className="">Cocinero</button></Link>
+        <div className="containerButtonsInitial">
+          <Link to="/mesero"><button className="buttonsInitial">Mesero</button></Link>
+          <Link to="/cocinero"><button className="buttonsInitial">Cocinero</button></Link>
+        </div>
       </div>
     );
   }
