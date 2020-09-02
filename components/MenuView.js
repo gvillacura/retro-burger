@@ -71,13 +71,13 @@ export class ChooseMenu extends React.Component {
 
 const BtnItems = (props) => {
   console.log('props', props)
-  return <button>{props.item.nombre}<br />
+  return <button className="buttonMenu" >{props.item.nombre}<br />
     {props.item.precio}</button>
 }
 
 const MenuLunch = () => {
   const optionsMenu = () => Almuerzo.map((items) =>
-    <BtnItems key={items.nombre.toString()} className="buttonMenu" item={items} />
+    <BtnItems key={items.nombre.toString()} item={items} />
   );
   return (
     <div className="containerViewButtonsMenu">
@@ -87,12 +87,11 @@ const MenuLunch = () => {
     </div>
  </div>
   );
-
 }
 
 const MenuBreakfast = () => {
   const optionsMenu = () => Desayuno.map((items) =>
-    <BtnItems key={items.nombre.toString()} className="buttonMenu"> item={items} />
+    <BtnItems key={items.nombre.toString()} item={items} />
   );
   return (
     <div className="containerViewButtonsMenu">
@@ -102,7 +101,6 @@ const MenuBreakfast = () => {
 </div>
   );
 }
-
 
 class SubMenu extends React.Component {
   render() {
@@ -127,3 +125,10 @@ class SubMenu extends React.Component {
   }
 } 
 
+class OrderDetails extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = "";
+  }
+
+}
