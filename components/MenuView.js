@@ -31,21 +31,50 @@ export class Menu extends React.Component {
         <button className={classMenuLunch} onClick={this.handleClickLunch}>Almuerzo</button>
         <button className={classMenuBreakfast} onClick={this.handleClickBreakfast}>Desayuno</button>
         {allFood}
-      </div>
+        <ChooseMenu />
+      </div> 
+
     );
   }
 }
+export class ChooseMenu extends React.Component {
+    constructor(props){
+      super(props);
+      this.handleClickIngredients=this.handleClickIngredients.bind(this);
+      this.state={optionIngredients: false};
+    }
+    handleClickIngredients(){
+      this.setState({optionIngredients: true})
+    }
+    render() {
+      let allIngredients;
+  
+      if(this.state.optionIngredients){
+        allIngredients= <SubMenu />
+      }
+      else{
+        allIngredients= ""
+      }
+      return ( 
+        <div>
+            <button onClick={this.handleClickIngredients} className="buttonMainMenu buttonMenu
+">{Almuerzo[0].nombre}<br/>
+            {Almuerzo[0].precio}</button>
+            <button onClick={this.handleClickIngredients} className="buttonMainMenu buttonMenu
+">{Almuerzo[1].nombre}<br/>
+            {Almuerzo[1].precio}</button>
+            {allIngredients}
+        </div> 
+      );
+    }
+  }
 
 class MenuAlmuerzo extends React.Component {
   render() {
     return (
       <div className="containerViewButtonsMenu">
         <div className="containerButtonsMenu">
-          <button className="buttonMainMenu buttonMenu">{Almuerzo[0].nombre}<br />
-            {Almuerzo[0].precio}</button>
-          <button className="buttonMainMenu buttonMenu">{Almuerzo[1].nombre}<br />
-            {Almuerzo[1].precio}</button>
-            <SubMenu />
+         <ChooseMenu/>
           <button className="buttonSidesMenu buttonMenu">{Almuerzo[2].nombre}<br />
             {Almuerzo[2].precio}</button>
           <button className="buttonSidesMenu buttonMenu">{Almuerzo[3].nombre}<br />
@@ -59,7 +88,6 @@ class MenuAlmuerzo extends React.Component {
           <button className="buttonDrinkMenu buttonMenu">{Almuerzo[7].nombre}<br />
             {Almuerzo[7].precio}</button>
         </div>
-      </div>
     );
   }
 }
