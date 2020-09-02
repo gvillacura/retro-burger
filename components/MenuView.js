@@ -31,7 +31,6 @@ export class Menu extends React.Component {
         <button className={classMenuLunch} onClick={this.handleClickLunch}>Almuerzo</button>
         <button className={classMenuBreakfast} onClick={this.handleClickBreakfast}>Desayuno</button>
         {allFood}
-        <ChooseMenu />
       </div> 
 
     );
@@ -55,15 +54,15 @@ export class ChooseMenu extends React.Component {
       else{
         allIngredients= ""
       }
-      return ( 
-        <div>
-            <button onClick={this.handleClickIngredients} className="buttonMainMenu buttonMenu
-">{Almuerzo[0].nombre}<br/>
-            {Almuerzo[0].precio}</button>
-            <button onClick={this.handleClickIngredients} className="buttonMainMenu buttonMenu
-">{Almuerzo[1].nombre}<br/>
-            {Almuerzo[1].precio}</button>
-            {allIngredients}
+      return (
+       <div>
+            <button onClick={this.handleClickIngredients} className="buttonMainMenu buttonMenu">
+              {Almuerzo[0].nombre}<br/>
+              {Almuerzo[0].precio}</button>
+            <button onClick={this.handleClickIngredients} className="buttonMainMenu buttonMenu">
+              {Almuerzo[1].nombre}<br/>
+              {Almuerzo[1].precio}</button>
+              {allIngredients}
         </div> 
       );
     }
@@ -88,6 +87,7 @@ class MenuAlmuerzo extends React.Component {
           <button className="buttonDrinkMenu buttonMenu">{Almuerzo[7].nombre}<br />
             {Almuerzo[7].precio}</button>
         </div>
+      </div>
     );
   }
 }
