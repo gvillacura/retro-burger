@@ -1,13 +1,154 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding:0;
+  background: #EDEEDC;
+  font-family: Unna;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* header */
+.header{
+  height: 118px;
+  width: 100%;
+  background: #5E5E5E;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  width: 100%;
+}
+.bellOff {
+  height: 100%;
+  margin-right: 15px;
+}
+.containerLogo{
+  width: 320px;
+}
+.containerBellOf{
+  height: 80px;
+}
+/* first page */
+.containerButtonsInitial{
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.buttonsInitial{
+  width: 300px;
+  height: 130px;
+  background: #F3F6CB;
+  border: 3px solid #81C9A4;
+  box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.3);
+  border-radius: 15px;
+  margin-bottom:100px;
+  font-size: 40px;
+  color: #5E5E5E;
+}
+/* second page */
+.containerTablesView{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
+.containerButtonsTables{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.buttonsTables{
+  width: 230px;
+  height: 110px;
+  background: #F3F6CB;
+  border: 3px solid #81C9A4;
+  box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.3);
+  border-radius: 15px;
+  color: #5E5E5E;
+  margin: 0 68px 80px 68px;
+  font-size: 35px;
+}
+/* third page */
+.buttonMenuOn{
+  background: #EDEEDC;
+  width: 50%;
+  height: 72px;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  font-size: 35px;
+  color: #5E5E5E;
+  border: none;
+}
+.buttonMenuOff{
+  background: #A9A4A4;
+  width: 50%;
+  height: 72px;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  font-size: 35px;
+  color: #5E5E5E;
+  border: none;
+}
+.containerViewButtonsMenu{
+  display: flex;
+  width: 50%;
+  height: 85vh;
+}
+.containerButtonsMenu{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+}
+.buttonMenu{
+  width: 165px;
+  height: 96px;
+  border: 3px solid #F3F6CB;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+  border-radius: 15px;
+  font-size: 25px;
+  margin: 0 27px 80px 27px;
+}
+.buttonDrinkMenu{ 
+  background: #81C9A4;
+  color: #5E5E5E;
+}
+.buttonMainMenu{
+  background: #5E5E5E;
+  color: #F3F6CB;
+}
+.buttonSidesMenu{
+  background: #E6456F;
+  color: #F3F6CB;
+}
+.buttonSubMenu{
+  width: 105px;
+  height: 50px;
+  background: #F3F6CB;
+  border: 2px solid #81C9A4;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+  border-radius: 15px;
+  font-size: 20px;
+  color: #5E5E5E;
+  margin: 0 10px 45px 18px;
+}
+.buttonSubMenuReady{
+  width: 105px;
+  height: 45px;
+  background: #C7C2C2;
+  border: 1px solid rgba(94, 94, 94, 0.76);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+  font-size: 25px;
+  color: #5E5E5E;
+  font-weight: bold;
+  margin-bottom: 80px;
+}
+.containerButtonsSubMenu{
+  display: flex;
+  flex-flow: column;
+}
+.containerbuttonSubMenuReady{
+  align-self: flex-end;
 }

@@ -67,7 +67,7 @@
   ],
   "proteina": ["Res", "Pollo", "Vegana"],
   "agregado": {
-    "huevo": ["Huevo", "$800"],
-    "queso": ["Queso", "$500"]
+    "huevo": ["+ Huevo", "$800"],
+    "queso": ["+ Queso", "$500"]
   }
 }

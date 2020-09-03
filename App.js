@@ -4,11 +4,11 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
 } from "react-router-dom";
 import { View } from './components/InitialView.js';
 import { Tables } from './components/TablesView.js';
 import { Menu } from './components/MenuView.js'
+import { Kitchen } from './components/KitchenView.js'
 
 class App extends React.Component {
   render(){
@@ -23,6 +23,9 @@ class App extends React.Component {
         </Route>
         <Route exact path="/mesero/mesa">
           <Menu />
+        </Route>
+        <Route exact path="/cocinero">
+          <Kitchen />
         </Route>
       </Switch>
     </Router>
