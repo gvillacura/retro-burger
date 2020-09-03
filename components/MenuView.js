@@ -87,19 +87,3 @@ class MenuDesayuno extends React.Component {
   }
 }
 
- class SubMenu extends React.Component {
-    render() {
-      return(
-        <div>
-          <button className="">{proteina[0]}</button>
-          <button className="">{proteina[1]}</button>
-          <button className="">{proteina[2]}</button>
-          <button className="">{agregado.huevo[0]}<br/>
-          {agregado.huevo[1]}</button>
-          <button className="">{agregado.queso[0]}<br/>
-          {agregado.queso[1]}</button>
-          <button className="">Listo</button>          
-        </div>
-      );
-    }
-  } 
