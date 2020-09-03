@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import { View } from './components/InitialView.js';
 import { Tables } from './components/TablesView.js';
-import { Menu } from './components/MenuView.js'
+import { ContentMenuOrderDetail } from './components/MenuView.js'
 import { Kitchen } from './components/KitchenView.js'
 
 class App extends React.Component {
@@ -22,7 +22,7 @@ class App extends React.Component {
           <Tables />
         </Route>
         <Route exact path="/mesero/mesa">
-          <Menu />
+            <ContentMenuOrderDetail />
         </Route>
         <Route exact path="/cocinero">
           <Kitchen />
