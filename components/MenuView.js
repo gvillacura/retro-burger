@@ -159,4 +159,3 @@ class SubMenu extends React.Component {
     );
   }
 }
-
