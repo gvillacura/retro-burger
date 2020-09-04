@@ -7,22 +7,28 @@ export class ContentMenuOrderDetail extends React.Component {
   constructor(props) {
     super(props);
     this.handleIndexButtonClicked = this.handleIndexButtonClicked.bind(this);
-    this.state = { indexButtonClicked: undefined }
+    this.state = { indexButtonClicked: undefined,
+                    listaOrden:[] 
+                  }
   }
   handleIndexButtonClicked(indexButtonClicked) {
-    this.setState({ indexButtonClicked: indexButtonClicked })
-  }
+    this.setState((state) =>{
+       const list = state.listaOrden.concat(indexButtonClicked)
+      return {listaOrden: list}
+    })
+  };
   render() {
     return (
       <div>
         <Menu indexButtonClicked={this.state.indexButtonClicked} onHandleIndexButtonClicked={this.handleIndexButtonClicked} />
-        <OrderDetail indexButtonClicked={this.state.indexButtonClicked} />
+        <OrderDetail indexButtonClicked={this.state.listaOrden} />
       </div>
     );
   }
-}
+};
 
 class OrderDetail extends React.Component {
+
   render() {
     return (
       <div>{this.props.indexButtonClicked}</div>
@@ -45,7 +51,9 @@ class Menu extends React.Component {
   }
 
   render() {
-    let allFood = this.state.optionMenu === "lunch" ? <MenuLunch indexButtonClicked={this.props.indexButtonClicked} onHandleIndexButtonClicked={this.props.onHandleIndexButtonClicked} /> : <MenuBreakfast />;
+    let allFood = this.state.optionMenu === "lunch" ? <MenuLunch 
+    indexButtonClicked={this.props.indexButtonClicked} 
+    onHandleIndexButtonClicked={this.props.onHandleIndexButtonClicked} /> : <MenuBreakfast />;
     // para tener distintos colores en pestaña menu y almuerzo 
     let classMenuLunch = this.state.optionMenu === "lunch" ? "buttonMenuOn" : "buttonMenuOff";
     let classMenuBreakfast = this.state.optionMenu === "breakfast" ? "buttonMenuOn" : "buttonMenuOff";
@@ -77,7 +85,6 @@ class MenuLunch extends React.Component {
   catchIndexButtonClicked(index) {
     this.props.onHandleIndexButtonClicked(index)
   }
-
 
 
   render() {
