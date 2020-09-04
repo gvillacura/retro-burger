@@ -7,25 +7,55 @@ export class ContentMenuOrderDetail extends React.Component {
   constructor(props) {
     super(props);
     this.handleIndexButtonClicked = this.handleIndexButtonClicked.bind(this);
-    this.state = { indexButtonClicked: undefined }
+    this.state = { indexButtonClicked: undefined, menuClicked: undefined }
   }
-  handleIndexButtonClicked(indexButtonClicked) {
-    this.setState({ indexButtonClicked: indexButtonClicked })
+  handleIndexButtonClicked(indexButtonClicked,menuClicked) {
+    this.setState({ indexButtonClicked: indexButtonClicked, menuClicked: menuClicked  })   
   }
   render() {
+
     return (
       <div>
-        <Menu indexButtonClicked={this.state.indexButtonClicked} onHandleIndexButtonClicked={this.handleIndexButtonClicked} />
-        <OrderDetail indexButtonClicked={this.state.indexButtonClicked} />
+        <Menu 
+          indexButtonClicked={this.state.indexButtonClicked} 
+          onHandleIndexButtonClicked={this.handleIndexButtonClicked} 
+          menuClicked={this.state.menuClicked} />
+        <OrderDetail 
+          indexButtonClicked={this.state.indexButtonClicked} 
+           menuClicked={this.state.menuClicked} />
       </div>
     );
   }
 }
 
 class OrderDetail extends React.Component {
-  render() {
-    return (
-      <div>{this.props.indexButtonClicked}</div>
+  // constructor(props){ 
+  //   super(props);
+  //   this.orderDetailChange = this.orderDetailChange.bind(this);
+  //   this.state = {orderTable: "oli"}  
+  // }
+  // orderDetailChange(){
+  // if(this.props.menuClicked === "Almuerzo"){
+  //   // let order = [];
+  //   this.setState( {orderTable : "shao"})
+  //    console.log('this.state.orderTable')
+  //   //  order.push(Almuerzo[parseInt(this.props.indexButtonClicked)])
+  //   }
+  // }
+  
+  render() {  
+    
+    let oli =Almuerzo[parseInt(this.props.indexButtonClicked)]
+    order.push(oli);
+    const oli = () =>{
+
+    }
+  
+    console.log(order)
+    return(
+      <div >  
+        oli
+      </div>
     );
   }
 }
@@ -45,7 +75,12 @@ class Menu extends React.Component {
   }
 
   render() {
-    let allFood = this.state.optionMenu === "lunch" ? <MenuLunch indexButtonClicked={this.props.indexButtonClicked} onHandleIndexButtonClicked={this.props.onHandleIndexButtonClicked} /> : <MenuBreakfast />;
+    let allFood = this.state.optionMenu === "lunch" ? 
+    <MenuLunch 
+      indexButtonClicked={this.props.indexButtonClicked} 
+      menuClicked={this.props.menuClicked} 
+      onHandleIndexButtonClickedChildren={this.props.onHandleIndexButtonClicked}  /> : 
+    <MenuBreakfast />;
     // para tener distintos colores en pestaña menu y almuerzo 
     let classMenuLunch = this.state.optionMenu === "lunch" ? "buttonMenuOn" : "buttonMenuOff";
     let classMenuBreakfast = this.state.optionMenu === "breakfast" ? "buttonMenuOn" : "buttonMenuOff";
@@ -68,17 +103,12 @@ class MenuLunch extends React.Component {
     super(props);
     this.state = { activeButton: undefined };
   }
-  // listenButtons = (e) =>{
-  //   console.log(e.target.value) 
-  // }
   showIngredientsWithClick(index) {
     this.setState({ activeButton: index })
   }
   catchIndexButtonClicked(index) {
-    this.props.onHandleIndexButtonClicked(index)
+    this.props.onHandleIndexButtonClickedChildren(index,"almuerzo")
   }
-
-
 
   render() {
     return (
