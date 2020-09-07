@@ -103,6 +103,10 @@ body {
   border: none;
 }
 
+.containerMenuOrderDetail {
+  display: flex;
+}
+
 /* menu */
 .containerViewButtonsMenu {
   display: flex;
@@ -176,11 +180,12 @@ body {
 }
 
 /* Order Detail */
-.containerViewOrdelDetail {
+.containerViewOrderDetail {
   display: flex;
   width: 50%;
   height: 85vh;
 }
+
 .containerOrderDetail {
   display: flex;
   justify-content: center;
