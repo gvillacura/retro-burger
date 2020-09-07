@@ -1,5 +1,3 @@
-import React from 'react';
+import React from "react";
 
-export class Kitchen extends React.Component{
-
-}oli
+export class Kitchen extends React.Component {}
