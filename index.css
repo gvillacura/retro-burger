@@ -1,154 +1,191 @@
 body {
   margin: 0;
-  padding:0;
-  background: #EDEEDC;
+  padding: 0;
+  background: #edeedc;
   font-family: Unna;
 }
 
 /* header */
-.header{
+.header {
   height: 118px;
   width: 100%;
-  background: #5E5E5E;
+  background: #5e5e5e;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 .logo {
   width: 100%;
 }
+
 .bellOff {
   height: 100%;
   margin-right: 15px;
 }
-.containerLogo{
+
+.containerLogo {
   width: 320px;
 }
-.containerBellOf{
+
+.containerBellOf {
   height: 80px;
 }
+
 /* first page */
-.containerButtonsInitial{
+.containerButtonsInitial {
   height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.buttonsInitial{
+
+.buttonsInitial {
   width: 300px;
   height: 130px;
-  background: #F3F6CB;
-  border: 3px solid #81C9A4;
+  background: #f3f6cb;
+  border: 3px solid #81c9a4;
   box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.3);
   border-radius: 15px;
-  margin-bottom:100px;
+  margin-bottom: 100px;
   font-size: 40px;
-  color: #5E5E5E;
+  color: #5e5e5e;
 }
+
 /* second page */
-.containerTablesView{
+.containerTablesView {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 90vh;
 }
-.containerButtonsTables{
+
+.containerButtonsTables {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
 }
-.buttonsTables{
+
+.buttonsTables {
   width: 230px;
   height: 110px;
-  background: #F3F6CB;
-  border: 3px solid #81C9A4;
+  background: #f3f6cb;
+  border: 3px solid #81c9a4;
   box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.3);
   border-radius: 15px;
-  color: #5E5E5E;
+  color: #5e5e5e;
   margin: 0 68px 80px 68px;
   font-size: 35px;
 }
+
 /* third page */
-.buttonMenuOn{
-  background: #EDEEDC;
+.buttonMenuOn {
+  background: #edeedc;
   width: 50%;
   height: 72px;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   font-size: 35px;
-  color: #5E5E5E;
+  color: #5e5e5e;
   border: none;
 }
-.buttonMenuOff{
-  background: #A9A4A4;
+
+.buttonMenuOff {
+  background: #a9a4a4;
   width: 50%;
   height: 72px;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   font-size: 35px;
-  color: #5E5E5E;
+  color: #5e5e5e;
   border: none;
 }
-.containerViewButtonsMenu{
+
+/* menu */
+.containerViewButtonsMenu {
   display: flex;
   width: 50%;
   height: 85vh;
 }
-.containerButtonsMenu{
+
+.containerButtonsMenu {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-content: center;
 }
-.buttonMenu{
+
+.buttonMenu {
   width: 165px;
   height: 96px;
-  border: 3px solid #F3F6CB;
+  border: 3px solid #f3f6cb;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
   border-radius: 15px;
   font-size: 25px;
   margin: 0 27px 80px 27px;
 }
-.buttonDrinkMenu{ 
-  background: #81C9A4;
-  color: #5E5E5E;
+
+.buttonDrinkMenu {
+  background: #81c9a4;
+  color: #5e5e5e;
 }
-.buttonMainMenu{
-  background: #5E5E5E;
-  color: #F3F6CB;
+
+.buttonMainMenu {
+  background: #5e5e5e;
+  color: #f3f6cb;
 }
-.buttonSidesMenu{
-  background: #E6456F;
-  color: #F3F6CB;
+
+.buttonSidesMenu {
+  background: #e6456f;
+  color: #f3f6cb;
 }
-.buttonSubMenu{
+
+.buttonSubMenu {
   width: 105px;
   height: 50px;
-  background: #F3F6CB;
-  border: 2px solid #81C9A4;
+  background: #f3f6cb;
+  border: 2px solid #81c9a4;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
   border-radius: 15px;
   font-size: 20px;
-  color: #5E5E5E;
+  color: #5e5e5e;
   margin: 0 10px 45px 18px;
 }
-.buttonSubMenuReady{
+
+.buttonSubMenuReady {
   width: 105px;
   height: 45px;
-  background: #C7C2C2;
+  background: #c7c2c2;
   border: 1px solid rgba(94, 94, 94, 0.76);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
   font-size: 25px;
-  color: #5E5E5E;
+  color: #5e5e5e;
   font-weight: bold;
   margin-bottom: 80px;
 }
-.containerButtonsSubMenu{
+
+.containerButtonsSubMenu {
   display: flex;
   flex-flow: column;
 }
-.containerbuttonSubMenuReady{
+
+.containerbuttonSubMenuReady {
   align-self: flex-end;
+}
+
+/* Order Detail */
+.containerViewOrdelDetail {
+  display: flex;
+  width: 50%;
+  height: 85vh;
+}
+.containerOrderDetail {
+  display: flex;
+  justify-content: center;
+  background-color: #e5e5e5;
+  border: 5px solid rgba(94, 94, 94, 0.59);
+  width: 370px;
+  height: 800px;
 }

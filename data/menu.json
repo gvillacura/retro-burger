@@ -2,12 +2,22 @@
   "Almuerzo": [{
       "nombre": "Hamburguesa Simple",
       "precio": "$5.990",
-      "cantidad": 0
+      "cantidad": 0,
+      "proteina": ["Res", "Pollo", "Vegana"],
+      "agregado": {
+        "huevo": ["+ Huevo", "$800"],
+        "queso": ["+ Queso", "$500"]
+      }
     },
     {
       "nombre": "Hamburguesa Doble",
       "precio": "$7.990",
-      "cantidad": 0
+      "cantidad": 0,
+      "proteina": ["Res", "Pollo", "Vegana"],
+      "agregado": {
+        "huevo": ["+ Huevo", "$800"],
+        "queso": ["+ Queso", "$500"]
+      }
     },
     {
       "nombre": "Papas Fritas",
@@ -86,4 +96,5 @@
     "huevo": ["+ Huevo", "$800"],
     "queso": ["+ Queso", "$500"]
   }
+
 }
