@@ -1,5 +1,6 @@
 import React from "react";
 import { ContentHeader } from "./InitialView";
+import { saveOrder } from "../services/MeseroService";
 import { Almuerzo, Desayuno, agregado, proteina } from "../data/menu.json";
 
 export class ContentMenuOrderDetail extends React.Component {
@@ -103,8 +104,37 @@ const OrderDetail = (props) => {
     );
   });
 
-  return orderList;
+  return (
+    <div>
+      {orderList}
+      <SendOrder orderToSend={props.orderTable} />
+    </div>
+  );
 };
+
+class SendOrder extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  handleClickSendOrder(orderTable) {
+    saveOrder(orderTable);
+  }
+  render() {
+    return (
+      <div>
+        <button
+          onClick={() => {
+            this.handleClickSendOrder(this.props.orderToSend);
+          }}
+        >
+          {" "}
+          Enviar pedido{" "}
+        </button>
+      </div>
+    );
+  }
+}
 
 class Menu extends React.Component {
   constructor(props) {

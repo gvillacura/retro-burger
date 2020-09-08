@@ -182,7 +182,7 @@ body {
 /* Order Detail */
 .containerViewOrderDetail {
   display: flex;
-  width: 50%;
+
   height: 85vh;
 }
 
