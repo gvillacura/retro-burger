@@ -81,6 +81,11 @@ body {
 }
 
 /* third page */
+.buttonsChoiceMenu {
+  display: flex;
+  flex-direction: row;
+}
+
 .buttonMenuOn {
   background: #edeedc;
   width: 50%;
@@ -90,6 +95,7 @@ body {
   font-size: 35px;
   color: #5e5e5e;
   border: none;
+  flex-wrap: nowrap;
 }
 
 .buttonMenuOff {
@@ -101,24 +107,22 @@ body {
   font-size: 35px;
   color: #5e5e5e;
   border: none;
-}
-
-.containerMenuOrderDetail {
-  display: flex;
+  flex-wrap: nowrap;
 }
 
 /* menu */
 .containerViewButtonsMenu {
   display: flex;
   width: 50%;
-  height: 85vh;
+  /* flex-wrap: wrap; */
 }
 
 .containerButtonsMenu {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-content: center;
+  margin-top: 100px;
+  /* align-content: center; */
 }
 
 .buttonMenu {
@@ -182,15 +186,41 @@ body {
 /* Order Detail */
 .containerViewOrderDetail {
   display: flex;
-
-  height: 85vh;
+  width: 50%;
+  /* height: 85vh; */
+  justify-content: center;
 }
 
 .containerOrderDetail {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   background-color: #e5e5e5;
   border: 5px solid rgba(94, 94, 94, 0.59);
   width: 370px;
-  height: 800px;
+  height: 900px;
+  margin-top: 100px;
+}
+
+.containerAllPage {
+  display: flex;
+  flex-wrap: wrap
+}
+
+.containerEachOrder {
+  display: flex;
+  flex-direction: column;
+  height: 130px;
+  width: 100%;
+  justify-content: center;
+  font-size: 30px;
+  border: 2px dashed #A9A4A4;
+}
+
+.priceOrder {
+  display: flex;
+  align-items: flex-end;
+  align-content: flex-end;
+  justify-items: flex-end;
+  justify-content: flex-end;
 }
