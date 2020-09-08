@@ -14,6 +14,7 @@ export class ContentMenuOrderDetail extends React.Component {
       submenuProteinClicked: undefined,
       orderTable: [],
       optionMenu: "lunch",
+      totalPrice: 0,
     };
   }
   handleIndexButtonSubmenu(submenuProteinClicked) {
@@ -21,11 +22,37 @@ export class ContentMenuOrderDetail extends React.Component {
       submenuProteinClicked: submenuProteinClicked,
     });
   }
-  handleIndexButtonClicked(indexButtonClicked, menuClicked) {
+  handleIndexButtonClicked(indexButtonClicked, menuClicked, totalPrice) {
     this.setState({
       indexButtonClicked: indexButtonClicked,
       menuClicked: menuClicked,
+      totalPrice: totalPrice,
     });
+    if (menuClicked === "almuerzo") {
+      if (Almuerzo[indexButtonClicked].cantidad === 0) {
+        this.setState((state) => {
+          const actualOrder = state.orderTable.concat(
+            Almuerzo[indexButtonClicked]
+          );
+          return { orderTable: actualOrder };
+        });
+        if (indexButtonClicked !== 1 && indexButtonClicked !== 0) {
+          Almuerzo[indexButtonClicked].cantidad = 1;
+          Almuerzo[indexButtonClicked].preciototal =
+            Almuerzo[indexButtonClicked].precio;
+        }
+        this.setState({
+          totalPrice: totalPrice + Almuerzo[indexButtonClicked].preciototal,
+        });
+      } else {
+        Almuerzo[indexButtonClicked].cantidad += 1;
+        Almuerzo[indexButtonClicked].preciototal +=
+          Almuerzo[indexButtonClicked].precio;
+        this.setState({
+          totalPrice: totalPrice + Almuerzo[indexButtonClicked].preciototal,
+        });
+      }
+    }
     if (menuClicked === "desayuno") {
       if (Desayuno[indexButtonClicked].cantidad === 0) {
         this.setState((state) => {
@@ -37,32 +64,6 @@ export class ContentMenuOrderDetail extends React.Component {
         Desayuno[indexButtonClicked].cantidad = 1;
       } else {
         Desayuno[indexButtonClicked].cantidad += 1;
-      }
-    }
-
-    if (menuClicked === "almuerzo") {
-      if (
-        Almuerzo[indexButtonClicked].cantidad === 0 &&
-        indexButtonClicked !== 1 &&
-        indexButtonClicked !== 0
-      ) {
-        this.setState((state) => {
-          const actualOrder = state.orderTable.concat(
-            Almuerzo[indexButtonClicked]
-          );
-          return { orderTable: actualOrder };
-        });
-        Almuerzo[indexButtonClicked].cantidad = 1;
-      }
-      if (indexButtonClicked === 1 || indexButtonClicked === 0) {
-        this.setState((state) => {
-          const actualOrder = state.orderTable.concat(
-            Almuerzo[indexButtonClicked]
-          );
-          return { orderTable: actualOrder };
-        });
-      } else {
-        Almuerzo[indexButtonClicked].cantidad += 1;
       }
     }
   }
@@ -100,6 +101,7 @@ export class ContentMenuOrderDetail extends React.Component {
           menuClicked={this.state.menuClicked}
           orderTable={this.state.orderTable}
           submenuClicked={this.state.submenuClicked}
+          totalPrice={this.state.totalPrice}
         />
       </div>
     );
@@ -113,7 +115,7 @@ const OrderDetail = (props) => {
         <div>
           {item.nombre} x{item.cantidad}
         </div>
-        <div className="priceOrder">{item.precio}</div>
+        <div className="priceOrder">${item.preciototal}</div>
       </div>
     );
   });
@@ -122,6 +124,7 @@ const OrderDetail = (props) => {
     <div className="containerViewOrderDetail">
       <div className="containerOrderDetail">
         {orderList}
+        <div>Total: {props.totalPrice}</div>
         <SendOrder orderToSend={props.orderTable} />
       </div>
     </div>
@@ -140,8 +143,7 @@ class SendOrder extends React.Component {
             this.handleClickSendOrder(this.props.orderToSend);
           }}
         >
-          {" "}
-          Enviar pedido{" "}
+          Enviar pedido
         </button>
       </div>
     );

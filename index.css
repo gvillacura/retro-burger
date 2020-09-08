@@ -213,8 +213,8 @@ body {
   height: 130px;
   width: 100%;
   justify-content: center;
-  font-size: 30px;
-  border: 2px dashed #A9A4A4;
+  font-size: 25px;
+  border-bottom: 2px dashed #A9A4A4;
 }
 
 .priceOrder {

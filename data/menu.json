@@ -1,92 +1,108 @@
 {
   "Almuerzo": [{
       "nombre": "Hamburguesa Simple",
-      "precio": "$5.990",
+      "precio": 5990,
       "cantidad": 0,
+      "preciototal": 0,
       "proteina": ""
     },
     {
       "nombre": "Hamburguesa Doble",
-      "precio": "$7.990",
+      "precio": 7990,
       "cantidad": 0,
+      "preciototal": 0,
       "proteina": ""
     },
     {
       "nombre": "Papas Fritas",
-      "precio": "$1.990",
-      "cantidad": 0
+      "precio": 990,
+      "cantidad": 0,
+      "preciototal": 0
     },
     {
       "nombre": "Aros de Cebolla",
-      "precio": "$1.990",
-      "cantidad": 0
+      "precio": 1990,
+      "cantidad": 0,
+      "preciototal": 0
     },
     {
       "nombre": "Agua Gasificada",
-      "precio": "$700",
-      "cantidad": 0
+      "precio": 700,
+      "cantidad": 0,
+      "preciototal": 0
     },
     {
       "nombre": "Agua sin gas",
-      "precio": "$500",
-      "cantidad": 0
+      "precio": 500,
+      "cantidad": 0,
+      "preciototal": 0
     },
     {
       "nombre": "Milkshake Chocolate",
-      "precio": "$2.200",
-      "cantidad": 0
+      "precio": 2200,
+      "cantidad": 0,
+      "preciototal": 0
     },
     {
       "nombre": "Milkshake Fresa",
-      "precio": "$2.200",
-      "cantidad": 0
+      "precio": 2200,
+      "cantidad": 0,
+      "preciototal": 0
     }
   ],
   "Desayuno": [{
       "nombre": "Pancakes",
-      "precio": "$2.000",
-      "cantidad": 0
+      "precio": 2000,
+      "cantidad": 0,
+      "preciototal": 0
     },
     {
       "nombre": "Tostadas con huevo",
-      "precio": "$1.990",
-      "cantidad": 0
+      "precio": 1990,
+      "cantidad": 0,
+      "preciototal": 0
     },
     {
       "nombre": "Cafe americano",
-      "precio": "$1.000",
-      "cantidad": 0
+      "precio": 1000,
+      "cantidad": 0,
+      "preciototal": 0
     },
     {
       "nombre": "Café con leche",
-      "precio": "$1.200",
-      "cantidad": 0
+      "precio": 1200,
+      "cantidad": 0,
+      "preciototal": 0
     },
     {
       "nombre": "Agua Gasificada",
-      "precio": "$700",
-      "cantidad": 0
+      "precio": 700,
+      "cantidad": 0,
+      "preciototal": 0
     },
     {
       "nombre": "Agua sin gas",
-      "precio": "$500",
-      "cantidad": 0
+      "precio": 500,
+      "cantidad": 0,
+      "preciototal": 0
     },
     {
       "nombre": "Milkshake Chocolate",
-      "precio": "$2.200",
-      "cantidad": 0
+      "precio": 2200,
+      "cantidad": 0,
+      "preciototal": 0
     },
     {
       "nombre": "Milkshake Fresa",
-      "precio": "$2.200",
-      "cantidad": 0
+      "precio": 2200,
+      "cantidad": 0,
+      "preciototal": 0
     }
   ],
   "proteina": ["Res", "Pollo", "Vegana"],
   "agregado": {
-    "huevo": ["+ Huevo", "$800"],
-    "queso": ["+ Queso", "$500"]
+    "huevo": ["+ Huevo", 800],
+    "queso": ["+ Queso", 500]
   }
 
 }
