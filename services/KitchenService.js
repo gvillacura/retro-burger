@@ -11,3 +11,14 @@ export const getOrder = () => {
       });
     });
 };
+// let ordersStructured = [];
+
+// orders.forEach((order) => {
+//   const dataOrder = order.data();
+
+//   if (typeof ordersStructured[dataOrder.mesa] !== "undefined") {
+//     ordersStructured[dataOrder.mesa].push(dataOrder);
+//   } else {
+//     ordersStructured[dataOrder.mesa] = [dataOrder];
+//   }
+// });

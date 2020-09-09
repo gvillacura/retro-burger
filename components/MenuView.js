@@ -59,10 +59,10 @@ export class ContentMenuOrderDetail extends React.Component {
     if (menuClicked === "desayuno") {
       if (Desayuno[indexButtonClicked].cantidad === 0) {
         this.setState((state) => {
-          const aguacate = state.orderTable.concat(
+          const actualOrder = state.orderTable.concat(
             Desayuno[indexButtonClicked]
           );
-          return { orderTable: aguacate };
+          return { orderTable: actualOrder };
         });
         Desayuno[indexButtonClicked].cantidad = 1;
       } else {
@@ -100,6 +100,7 @@ export class ContentMenuOrderDetail extends React.Component {
         >
           Desayuno
         </button>
+        <div className="tableName">{JSON.parse(sessionStorage.table).table}</div>
         <Menu
           indexButtonClicked={this.state.indexButtonClicked}
           onHandleIndexButtonClicked={this.handleIndexButtonClicked}
@@ -134,14 +135,19 @@ const OrderDetail = (props) => {
   return (
     <div className="containerViewOrderDetail">
       <div className="containerOrderDetail">
-        {orderList}
-        <div>Total: {props.totalPrice}</div>
-        <SendOrder
-          orderToSend={props.orderTable}
-          priceToSend={props.totalPrice}
-          handleResetOrder={props.handleResetOrder}
+        <div className="containerAllOrders">
+          {orderList}
+        </div>
+        <div className="containerInfoBottom">
+          <div className="totalPriceOrder">Total: ${props.totalPrice}</div>
+          <textarea placeholder="Comentarios:" rows="4" cols="10"></textarea>
+          <SendOrder
+            orderToSend={props.orderTable}
+            priceToSend={props.totalPrice}
+     handleResetOrder={props.handleResetOrder}
           handleResetPrice={props.handleResetPrice}
-        />
+          />
+        </div>
       </div>
     </div>
   );
@@ -157,16 +163,11 @@ class SendOrder extends React.Component {
 
   render() {
     return (
-      <div>
-        <button
-          onClick={() => {
-            this.handleClickSendOrder(
-              this.props.orderToSend,
-              this.props.priceToSend,
-            );
-          }}
-        >Enviar pedido</button>
-      </div>
+
+      <button className="btnSendOrder"
+        onClick={() => { this.handleClickSendOrder(this.props.orderToSend, this.props.priceToSend) }}>
+        ENVIAR PEDIDO
+      </button>
     );
   }
 }
@@ -215,7 +216,7 @@ class MenuLunch extends React.Component {
         >
           {Almuerzo[0].nombre}
           <br />
-          {Almuerzo[0].precio}
+          ${Almuerzo[0].precio}
         </button>
         <button
           className="buttonMainMenu buttonMenu"
@@ -223,7 +224,7 @@ class MenuLunch extends React.Component {
         >
           {Almuerzo[1].nombre}
           <br />
-          {Almuerzo[1].precio}
+          ${Almuerzo[1].precio}
         </button>
         <button
           className="buttonSidesMenu buttonMenu"
@@ -231,7 +232,7 @@ class MenuLunch extends React.Component {
         >
           {Almuerzo[2].nombre}
           <br />
-          {Almuerzo[2].precio}
+          ${Almuerzo[2].precio}
         </button>
         <button
           className="buttonSidesMenu buttonMenu"
@@ -239,7 +240,7 @@ class MenuLunch extends React.Component {
         >
           {Almuerzo[3].nombre}
           <br />
-          {Almuerzo[3].precio}
+          ${Almuerzo[3].precio}
         </button>
         <button
           className="buttonDrinkMenu buttonMenu"
@@ -247,7 +248,7 @@ class MenuLunch extends React.Component {
         >
           {Almuerzo[4].nombre}
           <br />
-          {Almuerzo[4].precio}
+          ${Almuerzo[4].precio}
         </button>
         <button
           className="buttonDrinkMenu buttonMenu"
@@ -255,7 +256,7 @@ class MenuLunch extends React.Component {
         >
           {Almuerzo[5].nombre}
           <br />
-          {Almuerzo[5].precio}
+          ${Almuerzo[5].precio}
         </button>
         <button
           className="buttonDrinkMenu buttonMenu"
@@ -263,7 +264,7 @@ class MenuLunch extends React.Component {
         >
           {Almuerzo[6].nombre}
           <br />
-          {Almuerzo[6].precio}
+          ${Almuerzo[6].precio}
         </button>
         <button
           className="buttonDrinkMenu buttonMenu"
@@ -271,7 +272,7 @@ class MenuLunch extends React.Component {
         >
           {Almuerzo[7].nombre}
           <br />
-          {Almuerzo[7].precio}
+          ${Almuerzo[7].precio}
         </button>
       </div>
     );
@@ -291,7 +292,7 @@ class MenuBreakfast extends React.Component {
         >
           {Desayuno[0].nombre}
           <br />
-          {Desayuno[0].precio}
+          ${Desayuno[0].precio}
         </button>
         <button
           className="buttonMainMenu buttonMenu"
@@ -299,7 +300,7 @@ class MenuBreakfast extends React.Component {
         >
           {Desayuno[1].nombre}
           <br />
-          {Desayuno[1].precio}
+          ${Desayuno[1].precio}
         </button>
         <button
           className="buttonDrinkMenu buttonMenu"
@@ -307,7 +308,7 @@ class MenuBreakfast extends React.Component {
         >
           {Desayuno[2].nombre}
           <br />
-          {Desayuno[2].precio}
+          ${Desayuno[2].precio}
         </button>
         <button
           className="buttonDrinkMenu buttonMenu"
@@ -315,7 +316,7 @@ class MenuBreakfast extends React.Component {
         >
           {Desayuno[3].nombre}
           <br />
-          {Desayuno[3].precio}
+          ${Desayuno[3].precio}
         </button>
         <button
           className="buttonDrinkMenu buttonMenu"
@@ -323,7 +324,7 @@ class MenuBreakfast extends React.Component {
         >
           {Desayuno[4].nombre}
           <br />
-          {Desayuno[4].precio}
+          ${Desayuno[4].precio}
         </button>
         <button
           className="buttonDrinkMenu buttonMenu"
@@ -331,7 +332,7 @@ class MenuBreakfast extends React.Component {
         >
           {Desayuno[5].nombre}
           <br />
-          {Desayuno[5].precio}
+          ${Desayuno[5].precio}
         </button>
         <button
           className="buttonDrinkMenu buttonMenu"
@@ -339,7 +340,7 @@ class MenuBreakfast extends React.Component {
         >
           {Desayuno[6].nombre}
           <br />
-          {Desayuno[6].precio}
+          ${Desayuno[6].precio}
         </button>
         <button
           className="buttonDrinkMenu buttonMenu"
@@ -347,7 +348,7 @@ class MenuBreakfast extends React.Component {
         >
           {Desayuno[7].nombre}
           <br />
-          {Desayuno[7].precio}
+          ${Desayuno[7].precio}
         </button>
       </div>
     );
