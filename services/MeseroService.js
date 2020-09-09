@@ -28,10 +28,11 @@ const currentTime = () => {
 };
 
 
-export const saveOrder = (order, price) => {
+export const saveOrder = (order, price, estado) => {
   return db.collection("pedidos").doc(JSON.parse(sessionStorage.table).table + " " + idCurrenTime()).set({
     productos: order,
     totalPrice: price,
+    estadoPedido: estado,
     mesa: JSON.parse(sessionStorage.table).table,
     hora: currentTime(),
   });

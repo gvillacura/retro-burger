@@ -20,7 +20,7 @@ export class Kitchen extends React.Component {
     this.state = { kitchenOrders: [] };
   }
   componentDidMount() {
-    db.collection("pedido")
+    db.collection("pedidos")
       .get()
       .then((querySnapshot) => {
         const olis = querySnapshot.docs.map((doc) => doc.data());
