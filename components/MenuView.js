@@ -59,16 +59,25 @@ export class ContentMenuOrderDetail extends React.Component {
     if (menuClicked === "desayuno") {
       if (Desayuno[indexButtonClicked].cantidad === 0) {
         this.setState((state) => {
-          const actualOrder = state.orderTable.concat(
+          const aguacate = state.orderTable.concat(
             Desayuno[indexButtonClicked]
           );
-          return { orderTable: actualOrder };
+          return { orderTable: aguacate };
         });
         Desayuno[indexButtonClicked].cantidad = 1;
       } else {
         Desayuno[indexButtonClicked].cantidad += 1;
       }
     }
+  }
+
+  // Modificando el estado que se ejecutara en SendOrder
+  handleResetOrder = () => {
+    this.setState({ orderTable: [] })
+  }
+
+  handleResetPrice = () => {
+    this.setState({ totalPrice: 0 })
   }
 
   render() {
@@ -81,13 +90,13 @@ export class ContentMenuOrderDetail extends React.Component {
         <ContentHeader />
         <button
           className={classMenuLunch}
-          onClick={() => this.setState({ optionMenu: "lunch" })}
+          onClick={() => this.setState({ optionMenu: "lunch", orderTable: [] })}
         >
           Almuerzo
         </button>
         <button
           className={classMenuBreakfast}
-          onClick={() => this.setState({ optionMenu: "breakfast" })}
+          onClick={() => this.setState({ optionMenu: "breakfast", orderTable: [] })}
         >
           Desayuno
         </button>
@@ -102,6 +111,8 @@ export class ContentMenuOrderDetail extends React.Component {
           menuClicked={this.state.menuClicked}
           orderTable={this.state.orderTable}
           totalPrice={this.state.totalPrice}
+          handleResetOrder={this.handleResetOrder}
+          handleResetPrice={this.handleResetPrice}
         />
       </div>
     );
@@ -128,6 +139,8 @@ const OrderDetail = (props) => {
         <SendOrder
           orderToSend={props.orderTable}
           priceToSend={props.totalPrice}
+          handleResetOrder={props.handleResetOrder}
+          handleResetPrice={props.handleResetPrice}
         />
       </div>
     </div>
@@ -135,9 +148,13 @@ const OrderDetail = (props) => {
 };
 
 class SendOrder extends React.Component {
+
   handleClickSendOrder(orderTable, totalPrice) {
+    this.props.handleResetOrder();
+    this.props.handleResetPrice();
     saveOrder(orderTable, totalPrice);
   }
+
   render() {
     return (
       <div>
@@ -145,17 +162,14 @@ class SendOrder extends React.Component {
           onClick={() => {
             this.handleClickSendOrder(
               this.props.orderToSend,
-              this.props.priceToSend
+              this.props.priceToSend,
             );
           }}
-        >
-          Enviar pedido
-        </button>
+        >Enviar pedido</button>
       </div>
     );
   }
 }
-
 class Menu extends React.Component {
   render() {
     let allFood =
@@ -168,14 +182,14 @@ class Menu extends React.Component {
           }
         />
       ) : (
-        <MenuBreakfast
-          indexButtonClicked={this.props.indexButtonClicked}
-          menuClicked={this.props.menuClicked}
-          onHandleIndexButtonClickedChildren={
-            this.props.onHandleIndexButtonClicked
-          }
-        />
-      );
+          <MenuBreakfast
+            indexButtonClicked={this.props.indexButtonClicked}
+            menuClicked={this.props.menuClicked}
+            onHandleIndexButtonClickedChildren={
+              this.props.onHandleIndexButtonClicked
+            }
+          />
+        );
     return <div className="containerViewButtonsMenu">{allFood}</div>;
   }
 }
