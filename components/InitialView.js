@@ -17,7 +17,6 @@ export class ContentHeader extends React.Component {
     );
   }
 }
-
 export class View extends React.Component {
   render() {
     return (

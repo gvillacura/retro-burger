@@ -1,17 +1,16 @@
 {
-  "Almuerzo": [{
+  "Almuerzo": [
+    {
       "nombre": "Hamburguesa Simple",
       "precio": 5990,
       "cantidad": 0,
-      "preciototal": 0,
-      "proteina": ""
+      "preciototal": 0
     },
     {
       "nombre": "Hamburguesa Doble",
       "precio": 7990,
       "cantidad": 0,
-      "preciototal": 0,
-      "proteina": ""
+      "preciototal": 0
     },
     {
       "nombre": "Papas Fritas",
@@ -50,7 +49,8 @@
       "preciototal": 0
     }
   ],
-  "Desayuno": [{
+  "Desayuno": [
+    {
       "nombre": "Pancakes",
       "precio": 2000,
       "cantidad": 0,
@@ -99,10 +99,19 @@
       "preciototal": 0
     }
   ],
-  "proteina": ["Res", "Pollo", "Vegana"],
+  "proteina": [
+    "Res",
+    "Pollo",
+    "Vegana"
+  ],
   "agregado": {
-    "huevo": ["+ Huevo", 800],
-    "queso": ["+ Queso", 500]
+    "huevo": [
+      "+ Huevo",
+      800
+    ],
+    "queso": [
+      "+ Queso",
+      500
+    ]
   }
-
 }

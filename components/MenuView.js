@@ -2,6 +2,7 @@ import React from "react";
 import { ContentHeader } from "./InitialView";
 import { saveOrder } from "../services/MeseroService";
 import { Almuerzo, Desayuno } from "../data/menu.json";
+import { Link } from "react-router-dom";
 
 export class ContentMenuOrderDetail extends React.Component {
   constructor(props) {
@@ -144,8 +145,8 @@ const OrderDetail = (props) => {
           <SendOrder
             orderToSend={props.orderTable}
             priceToSend={props.totalPrice}
-     handleResetOrder={props.handleResetOrder}
-          handleResetPrice={props.handleResetPrice}
+            handleResetOrder={props.handleResetOrder}
+            handleResetPrice={props.handleResetPrice}
           />
         </div>
       </div>
@@ -164,10 +165,10 @@ class SendOrder extends React.Component {
   render() {
     return (
 
-      <button className="btnSendOrder"
+      <Link to="/mesero"><button className="btnSendOrder"
         onClick={() => { this.handleClickSendOrder(this.props.orderToSend, this.props.priceToSend) }}>
         ENVIAR PEDIDO
-      </button>
+      </button></Link>
     );
   }
 }

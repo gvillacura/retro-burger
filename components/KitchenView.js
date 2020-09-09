@@ -1,7 +1,19 @@
 import React from "react";
 import firebase from "../firebaseConfig";
+import logo from "../media/logo.png";
 const db = firebase.firestore();
 
+class ContentHeaderKitchen extends React.Component {
+  render() {
+    return (
+      <header className="header">
+        <div className="containerLogo">
+          <img src={logo} className="logo" alt="logo" />
+        </div>
+      </header>
+    );
+  }
+}
 export class Kitchen extends React.Component {
   constructor(props) {
     super(props);
@@ -16,15 +28,6 @@ export class Kitchen extends React.Component {
       });
   }
 
-  // const olisContent = olis.map((item) => {
-  //   return (
-  //     <div key={item.productos.nombre}>
-  //       <div>
-  //         {item.productos.nombre} x{item.productos.cantidad}
-  //       </div>
-  //     </div>
-  //   );
-  // });
   render() {
     const { kitchenOrders } = this.state;
     const kitchentList = kitchenOrders.map((order) => {
@@ -40,7 +43,9 @@ export class Kitchen extends React.Component {
       );
     });
 
-    return <div>{kitchentList}</div>;
+    return (<div><ContentHeaderKitchen />
+      <div>{kitchentList}</div>
+    </div>);
   }
 }
 
