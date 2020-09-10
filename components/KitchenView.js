@@ -31,37 +31,100 @@ export class Kitchen extends React.Component {
   render() {
     const { kitchenOrders } = this.state;
     const kitchentList = kitchenOrders.map((order) => {
-      return (
-        <OrderTable key={order.mesa + "-" + order.hora} table={order.mesa}>
-          {order.productos.map((product) => (
-            <OrderProducts
-              key={product.nombre + "-" + product.cantidad}
-              product={product}
-            />
-          ))}
-        </OrderTable>
-      );
+      if (order.estadoPedido === "En Proceso") {
+        return (
+          <OrderTable key={order.mesa + "-" + order.hora} valueButton={order.mesa + " " + order.hora} table={order.mesa}>
+            {order.productos.map((product) => (
+              <OrderProducts
+                key={product.nombre + "-" + product.cantidad}
+                product={product}
+              />
+            ))}
+          </OrderTable>
+        )
+      };
     });
 
-    return (<div><ContentHeaderKitchen />
-      <div>{kitchentList}</div>
-    </div>);
+    return (
+      <div>
+        <ContentHeaderKitchen />
+        <div className="containerAllOrderKitchen">
+          {kitchentList}
+        </div>
+      </div>);
   }
 }
 
-const OrderTable = ({ children, table }) => {
+const OrderTable = ({ children, table, valueButton }) => {
   return (
-    <div>
-      <h1>{table}</h1> <div>{children}</div>
+    <div className="containerOrderButton">
+      <div className="contailerEachOrderKitchen">
+        <div className="tableNameCounter">
+          <div className="tableNameKitchen">
+            {table}
+          </div>
+          {/* <div className="counterTime" onLoad={setTimeout(clock, 500)}>
+            {clock()}
+          </div> */}
+        </div>
+
+        <div className="containerContentProductComments">
+          <div className="containerContentProduct">
+            {children}
+          </div>
+          <div className="containerComment">
+            Comentarios
+        </div>
+        </div>
+      </div>
+      <div className="containerBtnReadyKitchen">
+        <button className="btnReadyKitchen" value={valueButton} onClick={(e)=>finishOrder(e)}>Listo</button>
+      </div>
     </div>
   );
 };
 
 const OrderProducts = ({ product }) => {
   return (
-    <div>
+    <div className="contentProduct">
       <div>{product.nombre}</div>
-      <div>{product.cantidad}</div>
+      <div>x{product.cantidad}</div>
     </div>
   );
 };
+
+// const clock=()=>{
+//   let actualTime= new Date();
+//   let hour = actualTime.getHours();
+//   let min = actualTime.getMinutes();
+//   let seg = actualTime.getSeconds();
+//   min = checkTime(min);
+//   seg = checkTime(seg);
+//   setTimeout(clock, 500)
+//   return(hour + ":" + min + ":" + seg)
+// }
+// function checkTime(i) {
+//   if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+//   return i;
+// }
+
+const finishOrder =(e)=>{
+  const valueButton= e.target.value;
+  db.collection('pedidos').get().then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+      if (valueButton === (doc.data().mesa+" "+doc.data().hora)) {
+      
+        firebase.firestore().collection('pedidos').doc(doc.data().mesa+" "+doc.data().hora).update({
+          estadoPedido: "Terminado"
+        })
+      }
+      else{
+        console.log("no eran iguales")
+      }
+    })
+  })
+}
+
+
+
+  
