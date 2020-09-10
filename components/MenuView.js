@@ -51,7 +51,6 @@ export class ContentMenuOrderDetail extends React.Component {
             (totalsum, oli) => totalsum + oli.preciototal,
             0
           );
-          console.log(total);
 
           return { totalPrice: total };
         });
@@ -80,6 +79,27 @@ export class ContentMenuOrderDetail extends React.Component {
   handleResetPrice = () => {
     this.setState({ totalPrice: 0 })
   }
+
+  deleteItems = (index) => {
+    console.log(index)
+    this.setState({
+      orderTable: this.state.orderTable.filter((item, idIndex) => {
+        console.log(idIndex)
+        return idIndex !== index
+      })
+    });
+  }
+
+  // handleSubtract = (index) => {
+  //   this.setState({
+  //     orderTable: this.state.orderTable.filter(function (item, id) {
+  //       if (item.cantidad += 1) {
+  //         return id !== index
+  //       }
+  //       return id !== index
+  //     })
+  //   });
+  // }
 
   render() {
     let classMenuLunch =
@@ -115,6 +135,7 @@ export class ContentMenuOrderDetail extends React.Component {
           totalPrice={this.state.totalPrice}
           handleResetOrder={this.handleResetOrder}
           handleResetPrice={this.handleResetPrice}
+          deleteItems={this.deleteItems}
         />
       </div>
     );
@@ -122,14 +143,23 @@ export class ContentMenuOrderDetail extends React.Component {
 }
 
 const OrderDetail = (props) => {
-  const orderList = props.orderTable.map((item) => {
+  const orderList = props.orderTable.map((item, idIndex) => {
     return (
-      <div className="containerEachOrder" key={item.nombre}>
+      <div className="containerEachOrder" key={item.nombre} >
+        <div className="trashOrder">
+          <div>
+            {item.nombre} x {item.cantidad}
+          </div>
+          <div>
+            <button className="btn-trash" onClick={() => props.deleteItems(idIndex)}><i className="fas fa-trash-alt"></i></button>
+          </div>
+        </div>
         <div>
-          {item.nombre} x{item.cantidad}
+          <button className="btn-trash btn-line" onClick={() => props.handleSubtract(idIndex)}>-</button>
         </div>
         <div className="priceOrder">${item.preciototal}</div>
       </div>
+
     );
   });
 
@@ -153,6 +183,7 @@ const OrderDetail = (props) => {
     </div>
   );
 };
+
 class SendOrder extends React.Component {
   constructor(props) {
     super(props);
@@ -176,7 +207,6 @@ class SendOrder extends React.Component {
     );
   }
 }
-
 class Menu extends React.Component {
   render() {
     let allFood =

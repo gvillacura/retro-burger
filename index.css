@@ -230,12 +230,10 @@ body {
   color: #5E5E5E;
   font-weight: bold;
 }
-
 .priceOrder {
   display: flex;
   justify-content: flex-end;
 }
-
 .btnSendOrder{
   background: #C7C2C2;
   border: 1px solid rgba(94, 94, 94, 0.76);
@@ -273,5 +271,20 @@ textarea{
   font-size: 25px;
   margin-right: 20px ;
   color: #5E5E5E;
-
+}
+/* Button Trash */
+.btn-trash{
+  border: none;
+  background: none;
+}
+.btn-line{
+  font-size: 1.5em;
+}
+.fa-trash-alt{
+  font-size: 2.2em;
+  color: #5e5e5e;
+}
+.trashOrder {
+  display: flex;
+  justify-content: space-between;
 }
