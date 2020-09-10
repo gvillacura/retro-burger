@@ -45,14 +45,11 @@ export class ContentMenuOrderDetail extends React.Component {
         Almuerzo[indexButtonClicked].cantidad += 1;
         Almuerzo[indexButtonClicked].preciototal +=
           Almuerzo[indexButtonClicked].precio;
-
         this.setState((state) => {
           const total = state.orderTable.reduce(
-            (totalsum, oli) => totalsum + oli.preciototal,
+            (totalsum, array) => totalsum + array.preciototal,
             0
           );
-          console.log(total);
-
           return { totalPrice: total };
         });
       }
@@ -66,19 +63,29 @@ export class ContentMenuOrderDetail extends React.Component {
           return { orderTable: actualOrder };
         });
         Desayuno[indexButtonClicked].cantidad = 1;
+        Desayuno[indexButtonClicked].preciototal =Desayuno[indexButtonClicked].precio;
+        this.setState((state) => {
+          const total = state.orderTable.reduce(
+            (totalsum, array) => totalsum + array.preciototal,0);
+          return { totalPrice: total };
+        });
       } else {
         Desayuno[indexButtonClicked].cantidad += 1;
+        Desayuno[indexButtonClicked].preciototal +=Desayuno[indexButtonClicked].precio;
+        this.setState((state) => {
+          const total = state.orderTable.reduce(
+            (totalsum, array) => totalsum + array.preciototal,
+            0
+          );
+          return { totalPrice: total };
+        });
       }
     }
   }
 
   // Modificando el estado que se ejecutara en SendOrder
-  handleResetOrder = () => {
-    this.setState({ orderTable: [] })
-  }
-
-  handleResetPrice = () => {
-    this.setState({ totalPrice: 0 })
+  handleReset = () => {
+    this.setState({ orderTable: [], totalPrice: 0 })
   }
 
   render() {
@@ -113,8 +120,7 @@ export class ContentMenuOrderDetail extends React.Component {
           menuClicked={this.state.menuClicked}
           orderTable={this.state.orderTable}
           totalPrice={this.state.totalPrice}
-          handleResetOrder={this.handleResetOrder}
-          handleResetPrice={this.handleResetPrice}
+          handleResetOrder={this.handleReset}
         />
       </div>
     );
@@ -145,8 +151,7 @@ const OrderDetail = (props) => {
           <SendOrder
             orderToSend={props.orderTable}
             priceToSend={props.totalPrice}
-            handleResetOrder={props.handleResetOrder}
-            handleResetPrice={props.handleResetPrice}
+            handleReset={props.handleReset}
           />
         </div>
       </div>
@@ -161,8 +166,7 @@ class SendOrder extends React.Component {
 
   handleClickSendOrder(orderTable, totalPrice) {
     const stateOrder = this.state.estadoPedido;
-    this.props.handleResetOrder();
-    this.props.handleResetPrice();
+    this.props.handleReset();
     saveOrder(orderTable, totalPrice, stateOrder);
   }
 
