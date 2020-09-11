@@ -20,7 +20,7 @@ export class ContentHeader extends React.Component {
 export class View extends React.Component {
   render() {
     return (
-      <div>
+      <div style={{ backgroundColor: "#c7c2c2" }}>
         <ContentHeader />
         <div className="containerButtonsInitial">
           <Link to="/mesero">

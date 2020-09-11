@@ -24,19 +24,24 @@ export class ContentMenuOrderDetail extends React.Component {
     });
     // construir array de pedidos
     const optionMenu = this.state.optionMenu;
-    if ((optionMenu)[indexButtonClicked].cantidad === 0) {
+    if (optionMenu[indexButtonClicked].cantidad === 0) {
       this.setState((state) => {
-        const actualOrder = state.orderTable.concat(optionMenu[indexButtonClicked]);
+        const actualOrder = state.orderTable.concat(
+          optionMenu[indexButtonClicked]
+        );
         return { orderTable: actualOrder };
       });
     }
     //actualizo cantidad de pedidos y sumo precio total de cada producto
     optionMenu[indexButtonClicked].cantidad += 1;
-    optionMenu[indexButtonClicked].preciototal += optionMenu[indexButtonClicked].precio;
+    optionMenu[indexButtonClicked].preciototal +=
+      optionMenu[indexButtonClicked].precio;
     // actualizo el total de todo el pedido
     this.setState((state) => {
       const total = state.orderTable.reduce(
-        (totalsum, oli) => totalsum + oli.preciototal, 0);
+        (totalsum, oli) => totalsum + oli.preciototal,
+        0
+      );
       return { totalPrice: total };
     });
   }
@@ -44,23 +49,23 @@ export class ContentMenuOrderDetail extends React.Component {
   // Modificando el estado que se ejecutara en SendOrder
   handleReset = () => {
     const optionMenu = this.state.optionMenu;
-    this.setState({ orderTable: [], totalPrice: 0 })
+    this.setState({ orderTable: [], totalPrice: 0 });
+
     optionMenu.map((item) => {
-      item.cantidad = 0
-      item.preciototal = 0
-    })
-  }
+      item.cantidad = 0;
+      item.preciototal = 0;
+    });
+  };
 
   deleteItems = (index) => {
-    console.log(index)
+    console.log(index);
     this.setState({
       orderTable: this.state.orderTable.filter((item, idIndex) => {
-        console.log(idIndex)
-        return idIndex !== index
-      })
+        console.log(idIndex);
+        return idIndex !== index;
+      }),
     });
-
-  }
+  };
 
   // handleSubtract = (index) => {
   //   this.setState({
@@ -74,19 +79,27 @@ export class ContentMenuOrderDetail extends React.Component {
   // }
 
   render() {
-    let classMenuLunch = this.state.optionMenu === Almuerzo ? "buttonMenuOn" : "buttonMenuOff";
-    let classMenuBreakfast = this.state.optionMenu === Desayuno ? "buttonMenuOn" : "buttonMenuOff";
+    let classMenuLunch =
+      this.state.optionMenu === Almuerzo ? "buttonMenuOn" : "buttonMenuOff";
+    let classMenuBreakfast =
+      this.state.optionMenu === Desayuno ? "buttonMenuOn" : "buttonMenuOff";
     return (
       <div className="containerAllPage">
         <ContentHeader />
         <button
           className={classMenuLunch}
-          onClick={() => this.setState({ optionMenu: Almuerzo, orderTable: [] })}>
+          onClick={() =>
+            this.setState({ optionMenu: Almuerzo, orderTable: [] })
+          }
+        >
           Almuerzo
         </button>
         <button
           className={classMenuBreakfast}
-          onClick={() => this.setState({ optionMenu: Desayuno, orderTable: [] })}>
+          onClick={() =>
+            this.setState({ optionMenu: Desayuno, orderTable: [] })
+          }
+        >
           Desayuno
         </button>
         <Menu
@@ -102,56 +115,83 @@ export class ContentMenuOrderDetail extends React.Component {
           totalPrice={this.state.totalPrice}
           handleReset={this.handleReset}
           deleteItems={this.deleteItems}
-
         />
       </div>
     );
   }
 }
 
-const OrderDetail = (props) => {
-  const orderList = props.orderTable.map((item, idIndex) => {
+class OrderDetail extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { comments: undefined };
+  }
+
+  handleChange(event) {
+    this.setState({ comments: event.target.value });
+  }
+
+  render() {
+    const orderList = this.props.orderTable.map((item, idIndex) => {
+      return (
+        <div className="containerEachOrder" key={item.nombre}>
+          <div className="trashOrder">
+            <div>
+              {item.nombre} x {item.cantidad}
+            </div>
+            <div>
+              <button
+                className="btn-trash"
+                onClick={() => this.props.deleteItems(idIndex)}
+              >
+                <i className="fas fa-trash-alt"></i>
+              </button>
+            </div>
+          </div>
+          <div>
+            <button
+              className="btn-trash btn-line"
+              onClick={() => this.props.handleSubtract(idIndex)}
+            >
+              -
+            </button>
+          </div>
+          <div className="priceOrder">${item.preciototal}</div>
+        </div>
+      );
+    });
     return (
-      <div className="containerEachOrder" key={item.nombre} >
-        <div className="trashOrder">
-          <div>
-            {item.nombre} x {item.cantidad}
-          </div>
-          <div>
-            <button className="btn-trash" onClick={() => props.deleteItems(idIndex)}><i className="fas fa-trash-alt"></i></button>
+      <div className="containerViewOrderDetail">
+        <div className="containerOrderDetail">
+          <div className="containerAllOrders">{orderList}</div>
+          <div className="containerInfoBottom">
+            <div className="totalPriceOrder">
+              Total: ${this.props.totalPrice}
+            </div>
+            <textarea
+              placeholder="Comentarios:"
+              rows="4"
+              cols="10"
+              value={this.state.comments}
+              onChange={(event) => this.handleChange(event)}
+            ></textarea>
+            <SendOrder
+              orderToSend={this.props.orderTable}
+              priceToSend={this.props.totalPrice}
+              handleReset={this.props.handleReset}
+              comments={this.state.comments}
+            />
           </div>
         </div>
-        <div>
-          <button className="btn-trash btn-line" onClick={() => props.handleSubtract(idIndex)}>-</button>
-        </div>
-        <div className="priceOrder">${item.preciototal}</div>
       </div>
-
     );
-  });
-
-  return (
-    <div className="containerViewOrderDetail">
-      <div className="containerOrderDetail">
-        <div className="containerAllOrders">{orderList}</div>
-        <div className="containerInfoBottom">
-          <div className="totalPriceOrder">Total: ${props.totalPrice}</div>
-          <textarea placeholder="Comentarios:" rows="4" cols="10"></textarea>
-          <SendOrder
-            orderToSend={props.orderTable}
-            priceToSend={props.totalPrice}
-            handleReset={props.handleReset}
-          />
-        </div>
-      </div>
-    </div>
-  );
-};
+  }
+}
 
 class SendOrder extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { orderState: "Sin pedido", buttonIsDisabled: true };
+    this.state = { orderState: "En proceso", buttonIsDisabled: true };
   }
   componentDidMount() {
     let buttonIsDisabled;
@@ -184,8 +224,7 @@ class SendOrder extends React.Component {
 
   handleClickSendOrder(orderTable, totalPrice) {
     const stateOrder = this.state.orderState;
-    this.props.handleReset();
-    saveOrder(orderTable, totalPrice, stateOrder);
+    saveOrder(orderTable, totalPrice, stateOrder, this.props.comments);
   }
   render() {
     return (
@@ -198,6 +237,7 @@ class SendOrder extends React.Component {
               this.props.orderToSend,
               this.props.priceToSend
             );
+            this.props.handleReset();
           }}
         >
           ENVIAR PEDIDO
@@ -217,11 +257,12 @@ class Menu extends React.Component {
         <div className="tableName">
           {JSON.parse(sessionStorage.table).table}
         </div>
-        <div >
+        <div>
           <div className="containerButtonsMenu">
             <button
               className="buttonMainMenu buttonMenu"
-              onClick={() => this.catchIndexButtonClicked(0)}>
+              onClick={() => this.catchIndexButtonClicked(0)}
+            >
               {optionMenu[0].nombre}
               <br />${optionMenu[0].precio}
             </button>
@@ -280,7 +321,6 @@ class Menu extends React.Component {
     );
   }
 }
-
 
 // class Modal extends React.Component {
 //   render() {
