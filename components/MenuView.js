@@ -22,7 +22,6 @@ export class ContentMenuOrderDetail extends React.Component {
       menuClicked: menuClicked,
       totalPrice: totalPrice,
     });
-<<<<<<< HEAD
     // construir array de pedidos
     const optionMenu = this.state.optionMenu;
     if (optionMenu[indexButtonClicked].cantidad === 0) {
@@ -32,65 +31,6 @@ export class ContentMenuOrderDetail extends React.Component {
         );
         return { orderTable: actualOrder };
       });
-=======
-    if (menuClicked === "almuerzo") {
-      if (Almuerzo[indexButtonClicked].cantidad === 0) {
-        this.setState((state) => {
-          const actualOrder = state.orderTable.concat(
-            Almuerzo[indexButtonClicked]
-          );
-          return { orderTable: actualOrder };
-        });
-        Almuerzo[indexButtonClicked].cantidad = 1;
-        Almuerzo[indexButtonClicked].preciototal =
-          Almuerzo[indexButtonClicked].precio;
-        this.setState((state) => {
-          const total = state.orderTable.reduce(
-            (totalsum, array) => totalsum + array.preciototal,
-            0
-          );
-          return { totalPrice: total };
-        });
-      } else {
-        Almuerzo[indexButtonClicked].cantidad += 1;
-        Almuerzo[indexButtonClicked].preciototal +=
-          Almuerzo[indexButtonClicked].precio;
-        this.setState((state) => {
-          const total = state.orderTable.reduce(
-            (totalsum, array) => totalsum + array.preciototal,
-            0
-          );
-          return { totalPrice: total };
-        });
-      }
-    }
-    if (menuClicked === "desayuno") {
-      if (Desayuno[indexButtonClicked].cantidad === 0) {
-        this.setState((state) => {
-          const actualOrder = state.orderTable.concat(
-            Desayuno[indexButtonClicked]
-          );
-          return { orderTable: actualOrder };
-        });
-        Desayuno[indexButtonClicked].cantidad = 1;
-        Desayuno[indexButtonClicked].preciototal = Desayuno[indexButtonClicked].precio;
-        this.setState((state) => {
-          const total = state.orderTable.reduce(
-            (totalsum, array) => totalsum + array.preciototal, 0);
-          return { totalPrice: total };
-        });
-      } else {
-        Desayuno[indexButtonClicked].cantidad += 1;
-        Desayuno[indexButtonClicked].preciototal += Desayuno[indexButtonClicked].precio;
-        this.setState((state) => {
-          const total = state.orderTable.reduce(
-            (totalsum, array) => totalsum + array.preciototal,
-            0
-          );
-          return { totalPrice: total };
-        });
-      }
->>>>>>> changes function reset with two states
     }
     //actualizo cantidad de pedidos y sumo precio total de cada producto
     optionMenu[indexButtonClicked].cantidad += 1;
