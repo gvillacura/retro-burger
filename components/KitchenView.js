@@ -31,23 +31,25 @@ export class Kitchen extends React.Component {
       });
   }
 
-  componentDidUpdate() {
-    db.collection("pedidos")
-      .get()
-      .then((querySnapshot) => {
-        const olis = querySnapshot.docs.map((doc) => doc.data());
-        this.setState({ kitchenOrders: olis });
-      });
+  componentDidUpdate(prevProps) {
+    if (prevProps.orderToSend !== this.props.orderToSend) {
+      db.collection("pedidos")
+        .get()
+        .then((querySnapshot) => {
+          const olis = querySnapshot.docs.map((doc) => doc.data());
+          this.setState({ kitchenOrders: olis });
+        });
+    }
   }
 
   render() {
     const { kitchenOrders } = this.state;
-    let counter = 0;
+    // let counter = 0;
 
-    setInterval(function () {
-      <SecondsCounter seconds={counter} />;
-      counter += 1;
-    }, 1000);
+    // setInterval() {
+    //   <SecondsCounter seconds={counter} />;
+    //   counter += 1;
+    // }, 1000);
 
     const kitchentList = kitchenOrders.map((order) => {
       if (order.estadoPedido === "En proceso") {
@@ -84,11 +86,8 @@ const OrderTable = ({ children, table, valueButton, comments }) => {
       <div className="contailerEachOrderKitchen">
         <div className="tableNameCounter">
           <div className="tableNameKitchen">{table}</div>
-          {
-            <div className="counterTime" onLoad={clock()}>
-              {clock()}
-            </div>
-          }
+          {/* {<div className="counterTime" onLoad={clock()}></div>} */}
+          <SecondsCounter seconds={0} />;
         </div>
 
         <div className="containerContentProductComments">

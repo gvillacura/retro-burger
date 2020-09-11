@@ -124,7 +124,7 @@ export class ContentMenuOrderDetail extends React.Component {
 class OrderDetail extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { comments: undefined };
+    this.state = { comments: "" };
   }
 
   handleChange(event) {

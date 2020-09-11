@@ -22,7 +22,10 @@ const SecondsCounter = (props) => {
     }
   }
   return (
-    <div className="app d-flex justify-content-center">
+    <div
+      className="app d-flex justify-content-center"
+      style={{ display: "flex", justifyContent: "center" }}
+    >
       <div className="icon box">
         <i className="far fa-clock"></i>
       </div>
