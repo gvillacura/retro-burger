@@ -109,8 +109,9 @@ body {
   border: none;
   flex-wrap: nowrap;
 }
-/* titulo menu */ 
-.tableName{
+
+/* titulo menu */
+.tableName {
   display: flex;
   justify-content: center;
   width: 100%;
@@ -216,9 +217,11 @@ body {
   display: flex;
   flex-wrap: wrap
 }
-.containerAllOrders{
+
+.containerAllOrders {
   width: 100%;
 }
+
 .containerEachOrder {
   display: flex;
   flex-direction: column;
@@ -230,12 +233,14 @@ body {
   color: #5E5E5E;
   font-weight: bold;
 }
+
 .priceOrder {
   display: flex;
   justify-content: flex-end;
 }
-.btnSendOrder{
-  background: #C7C2C2;
+
+.btnSendOrder {
+  background: #81c9a4;
   border: 1px solid rgba(94, 94, 94, 0.76);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
   width: 370px;
@@ -245,7 +250,19 @@ body {
   font-weight: bold;
 
 }
-textarea{
+
+.btnSendOrder[disabled] {
+  background: #5e5e5e8a;
+  border: 1px solid rgba(94, 94, 94, 0.76);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+  width: 370px;
+  height: 50px;
+  font-size: 25px;
+  color: #5E5E5E;
+  font-weight: bold;
+}
+
+textarea {
   background: #EDEEDC;
   border: 2px solid rgba(94, 94, 94, 0.5);
   width: 339px;
@@ -254,46 +271,49 @@ textarea{
   font-style: italic;
   font-weight: bold;
   font-size: 20px;
-  margin:10px;
+  margin: 10px;
 }
-.containerInfoBottom{
+
+.containerInfoBottom {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   height: 100%;
 }
-.totalPriceOrder{
+
+.totalPriceOrder {
   display: flex;
   align-self: flex-end;
   font-weight: bold;
   font-size: 25px;
-  font-weight: bold;  
+  font-weight: bold;
   font-size: 25px;
-  margin-right: 20px ;
+  margin-right: 20px;
   color: #5E5E5E;
 }
+
 /* Button Trash */
-.btn-trash{
+.btn-trash {
   border: none;
   background: none;
 }
-.btn-line{
+
+.btn-line {
   font-size: 1.5em;
 }
-.fa-trash-alt{
+
+.fa-trash-alt {
   font-size: 2.2em;
   color: #5e5e5e;
 }
+
 .trashOrder {
   display: flex;
   justify-content: space-between;
 }
 
-
-}
-
 /* VIEW KITCHEN  */
-.contailerEachOrderKitchen{
+.contailerEachOrderKitchen {
   width: 709px;
   height: 285px;
   background: #E5E5E5;
@@ -301,18 +321,19 @@ textarea{
   margin-top: 80px;
 }
 
-.containerAllOrderKitchen{
+.containerAllOrderKitchen {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.tableNameKitchen{
+.tableNameKitchen {
   font-size: 30px;
   text-decoration-line: underline;
   color: #5E5E5E;
 }
-.tableNameCounter{
+
+.tableNameCounter {
   display: flex;
   border: 1px solid #000000;
   height: 58px;
@@ -320,12 +341,13 @@ textarea{
   justify-content: space-around;
   align-items: center;
 }
-.counterTime{
+
+.counterTime {
   font-size: 30px;
   color: #5E5E5E;
 }
 
-.contentProduct{
+.contentProduct {
   display: flex;
   justify-content: space-between;
   align-items: space-between;
@@ -333,7 +355,8 @@ textarea{
   font-size: 34px;
   color: #5E5E5E;
 }
-.containerContentProduct{
+
+.containerContentProduct {
   display: flex;
   flex-direction: column;
   width: 50%;
@@ -341,17 +364,20 @@ textarea{
   height: 224px;
 
 }
-.containerComment{
+
+.containerComment {
   width: 50%;
   border: 1px solid #5E5E5E;
   color: #5E5E5E;
   font-size: 25px;
 }
-.containerContentProductComments{
-  display:flex;
+
+.containerContentProductComments {
+  display: flex;
   flex-wrap: nowrap;
 }
-.btnReadyKitchen{
+
+.btnReadyKitchen {
   background: #5E5E5E;
   border: 3px solid #A9A4A4;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -361,11 +387,13 @@ textarea{
   font-size: 34px;
   justify-self: flex-end;
 }
-.containerBtnReadyKitchen{
+
+.containerBtnReadyKitchen {
   display: flex;
   justify-content: flex-end;
 }
-.containerOrderButton{
+
+.containerOrderButton {
   display: flex;
   flex-direction: column;
 }
