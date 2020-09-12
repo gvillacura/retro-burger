@@ -14,13 +14,7 @@ export class ContentHeader extends React.Component {
     return (
       <header className="header">
         <div>
-          {
-            this.state.goBackVisible ?
-              <GoBack
-                change={this.change}
-                goBackVisible={this.state.goBackVisible}
-              /> : null
-          }
+          <GoBack />
         </div>
         <div className="containerLogo">
           <img src={logo} className="logo" alt="logo" />
@@ -36,7 +30,7 @@ export class ContentHeader extends React.Component {
 class GoBack extends React.Component {
   render() {
     return (
-      <Link to="/mesero"> {}<i className="fas fa-chevron-left"></i></Link>
+      <Link to="/mesero"><i className="fas fa-chevron-left"></i></Link>
     )
   }
 }

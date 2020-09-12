@@ -75,7 +75,6 @@ export class ContentMenuOrderDetail extends React.Component {
         elem.preciototal = elem.precio * newQuantity
         return elem;
       }
-
       return elem;
     })
 
