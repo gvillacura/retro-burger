@@ -4,19 +4,16 @@ import logo from "../media/logo.png";
 import bell from "../media/bell-off.png";
 
 export class ContentHeader extends React.Component {
-  constructor(props) {
-    super();
-    this.state = {
-      goBackVisible: true
-    }
-  }
   render() {
+    const currentRoute = window.location.pathname;
     return (
       <header className="header">
-        <div>
-          <GoBack />
-        </div>
         <div className="containerLogo">
+          {
+            currentRoute !== '/mesero' && <div>
+              <GoBack />
+            </div>
+          }
           <img src={logo} className="logo" alt="logo" />
         </div>
         <div className="containerBellOf">

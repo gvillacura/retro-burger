@@ -20,8 +20,8 @@ body {
   width: 100%;
   background: #5e5e5e;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 }
 
 .App {
@@ -30,7 +30,6 @@ body {
 
 .logo {
   width: 100%;
-  margin-left: -90%;
 }
 
 .bellOff {
@@ -40,6 +39,8 @@ body {
 
 .containerLogo {
   width: 320px;
+  display: flex;
+  align-items: center;
 }
 
 .containerBellOf {
@@ -315,6 +316,7 @@ textarea {
 
 .btn-line {
   font-size: 1.5em;
+  font-weight: bold;
 }
 
 .fa-trash-alt {

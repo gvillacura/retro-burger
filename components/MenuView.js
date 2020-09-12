@@ -58,24 +58,24 @@ export class ContentMenuOrderDetail extends React.Component {
   };
 
   deleteItems = (index) => {
-    this.setState({
-      orderTable: this.state.orderTable.filter((item, idIndex) => {
-        item.cantidad = 0;
-        item.preciototal = 0;
-        return idIndex !== index;
-      }),
+    const filterOrderTable = this.state.orderTable.filter((item, idIndex) => {
+      item.cantidad = 0;
+      return idIndex !== index;
     });
+    this.setState({
+      orderTable: filterOrderTable,
+    })
   };
 
   handleSubtract = (indexSelectec) => {
-    const tempArray = this.state.orderTable.map((elem, indexMap) => {
-      if (indexMap === indexSelectec && elem.cantidad > 1) {
-        const newQuantity = --elem.cantidad;
-        elem.cantidad = newQuantity
-        elem.preciototal = elem.precio * newQuantity
-        return elem;
+    const tempArray = this.state.orderTable.map((item, indexMap) => {
+      if (indexMap === indexSelectec && item.cantidad > 1) {
+        const newQuantity = --item.cantidad;
+        item.cantidad = newQuantity
+        item.preciototal = item.precio * newQuantity
+        return item;
       }
-      return elem;
+      return item;
     })
 
     this.setState({ orderTable: tempArray })
