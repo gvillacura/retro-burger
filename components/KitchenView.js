@@ -1,7 +1,6 @@
 import React from "react";
 import firebase from "../firebaseConfig";
-import SecondsCounter from "./Counter";
-import {ContentHeaderKitchen} from './InitialView';
+import { ContentHeaderKitchen } from "./InitialView";
 import SecondsToString from "./Counter";
 import { idCurrenTime, currentDate } from "../services/MeseroService";
 
@@ -22,15 +21,13 @@ export class Kitchen extends React.Component {
       });
   }
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.orderToSend !== this.props.orderToSend) {
-      db.collection("pedidos")
-        .get()
-        .then((querySnapshot) => {
-          const olis = querySnapshot.docs.map((doc) => doc.data());
-          this.setState({ kitchenOrders: olis });
-        });
-    }
+  componentDidUpdate() {
+    db.collection("pedidos")
+      .get()
+      .then((querySnapshot) => {
+        const olis = querySnapshot.docs.map((doc) => doc.data());
+        this.setState({ kitchenOrders: olis });
+      });
   }
 
   render() {
@@ -65,7 +62,6 @@ export class Kitchen extends React.Component {
     );
   }
 }
-
 
 class OrderTable extends React.Component {
   constructor(props) {

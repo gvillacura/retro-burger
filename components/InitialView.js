@@ -4,28 +4,13 @@ import logo from "../media/logo.png";
 
 export class ContentHeaderKitchen extends React.Component {
   render() {
-    const currentRoute = window.location.pathname;
     return (
       <header className="header">
         <div className="containerLogo">
-          {
-            currentRoute !== '/mesero' && <div>
-              <GoBack />
-            </div>
-          }
           <img src={logo} className="logo" alt="logo" />
         </div>
       </header>
     );
-  }
-}
-
-
-class GoBack extends React.Component {
-  render() {
-    return (
-      <Link to="/mesero"><i className="fas fa-chevron-left"></i></Link>
-    )
   }
 }
 

@@ -5,9 +5,15 @@ import bell from "../media/bell-off.png";
 
 export class ContentHeader extends React.Component {
   render() {
+    const currentRoute = window.location.pathname;
     return (
       <header className="header">
         <div className="containerLogo">
+          {currentRoute !== "/mesero" && (
+            <div>
+              <GoBack />
+            </div>
+          )}
           <img src={logo} className="logo" alt="logo" />
         </div>
         <Bell />
@@ -16,30 +22,46 @@ export class ContentHeader extends React.Component {
   }
 }
 
+class GoBack extends React.Component {
+  render() {
+    return (
+      <Link to="/mesero">
+        <i className="fas fa-chevron-left"></i>
+      </Link>
+    );
+  }
+}
+
 class Bell extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { bellOnOff: false}
+    this.state = { bellonof: false };
   }
   render() {
     return (
       <div>
         <div className="containerBellOf">
-          <img src={bell} className="bellOff"  onClick={()=>this.setState({bellOnOff: !this.state.bellOnOff})}/>
+          <img
+            src={bell}
+            alt={""}
+            className="bellOff"
+            onClick={() => this.setState({ bellonof: !this.state.bellonof })}
+          />
         </div>
-        <SubMenuOrders
-          bellOnOff={this.state.bellOnOff}/>
+        <SubMenuOrders bellonof={this.state.bellonof} />
       </div>
     );
   }
 }
 
-const SubMenuOrders = (props) =>{
+const SubMenuOrders = (props) => {
+  const classSubMenuOrders =
+    props.bellonof === true
+      ? "containerSubMenuOrdersOpen"
+      : "containerSubMenuOrdersClose";
 
-  const classSubMenuOrders= props.bellOnOff=== true? 'containerSubMenuOrdersOpen' : 'containerSubMenuOrdersClose'
-
-  return(
-    <div className={classSubMenuOrders} bellOnOff={props.bellOnOff}>
+  return (
+    <div className={classSubMenuOrders} bellonof={props.bellonof}>
       <button className="containerEachOrderSubMenu">Pedido mesa 1</button>
       <button className="containerEachOrderSubMenu">Pedido mesa 2</button>
       <button className="containerEachOrderSubMenu">Pedido mesa 3</button>
@@ -47,8 +69,8 @@ const SubMenuOrders = (props) =>{
       <button className="containerEachOrderSubMenu">Pedido mesa 5</button>
       <button className="containerEachOrderSubMenu">Pedido mesa 6</button>
     </div>
-  )
-}
+  );
+};
 
 // const ModalOrders = ({ modalVisibility }) => {
 //   const classModal = modalVisibility ? "modal display-block" : "modal display-none";
@@ -88,7 +110,8 @@ export class Tables extends React.Component {
               <button
                 className="buttonsTables"
                 value="MESA 1"
-                onClick={this.tableChoose}>
+                onClick={this.tableChoose}
+              >
                 Mesa 1
               </button>
             </Link>
