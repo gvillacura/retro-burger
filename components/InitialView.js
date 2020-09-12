@@ -4,9 +4,24 @@ import logo from "../media/logo.png";
 import bell from "../media/bell-off.png";
 
 export class ContentHeader extends React.Component {
+  constructor(props) {
+    super();
+    this.state = {
+      goBackVisible: true
+    }
+  }
   render() {
     return (
       <header className="header">
+        <div>
+          {
+            this.state.goBackVisible ?
+              <GoBack
+                change={this.change}
+                goBackVisible={this.state.goBackVisible}
+              /> : null
+          }
+        </div>
         <div className="containerLogo">
           <img src={logo} className="logo" alt="logo" />
         </div>
@@ -15,6 +30,14 @@ export class ContentHeader extends React.Component {
         </div>
       </header>
     );
+  }
+}
+
+class GoBack extends React.Component {
+  render() {
+    return (
+      <Link to="/mesero"> {}<i className="fas fa-chevron-left"></i></Link>
+    )
   }
 }
 export class View extends React.Component {

@@ -30,6 +30,7 @@ body {
 
 .logo {
   width: 100%;
+  margin-left: -90%;
 }
 
 .bellOff {
@@ -320,11 +321,17 @@ textarea {
   font-size: 2.2em;
   color: #5e5e5e;
 }
-
 .trashOrder {
   display: flex;
   justify-content: space-between;
 }
+/* Button volver */
+.fa-chevron-left{
+  font-size: 4em;
+  color: #81c9a4;
+  margin-left: 20%;
+}
+
 /* VIEW KITCHEN  */
 .contailerEachOrderKitchen {
   width: 709px;

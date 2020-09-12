@@ -58,14 +58,29 @@ export class ContentMenuOrderDetail extends React.Component {
   };
 
   deleteItems = (index) => {
-    console.log(index);
     this.setState({
       orderTable: this.state.orderTable.filter((item, idIndex) => {
-        console.log(idIndex);
+        item.cantidad = 0;
+        item.preciototal = 0;
         return idIndex !== index;
       }),
     });
   };
+
+  handleSubtract = (indexSelectec) => {
+    const tempArray = this.state.orderTable.map((elem, indexMap) => {
+      if (indexMap === indexSelectec && elem.cantidad > 1) {
+        const newQuantity = --elem.cantidad;
+        elem.cantidad = newQuantity
+        elem.preciototal = elem.precio * newQuantity
+        return elem;
+      }
+
+      return elem;
+    })
+
+    this.setState({ orderTable: tempArray })
+  }
 
   render() {
     let classMenuLunch =
@@ -102,8 +117,9 @@ export class ContentMenuOrderDetail extends React.Component {
           menuClicked={this.state.menuClicked}
           orderTable={this.state.orderTable}
           totalPrice={this.state.totalPrice}
-          handleResetW={this.handleReset}
+          handleReset={this.handleReset}
           deleteItems={this.deleteItems}
+          handleSubtract={this.handleSubtract}
         />
       </div>
     );
@@ -236,105 +252,6 @@ class SendOrder extends React.Component {
   }
 }
 class Menu extends React.Component {
-  render() {
-    let allFood =
-      this.props.optionMenu === "lunch" ? (
-        <MenuLunch
-          indexButtonClicked={this.props.indexButtonClicked}
-          menuClicked={this.props.menuClicked}
-          onHandleIndexButtonClickedChildren={
-            this.props.onHandleIndexButtonClicked
-          }
-        />
-      ) : (
-          <MenuBreakfast
-            indexButtonClicked={this.props.indexButtonClicked}
-            menuClicked={this.props.menuClicked}
-            onHandleIndexButtonClickedChildren={
-              this.props.onHandleIndexButtonClicked
-            }
-          />
-        );
-    return <div className="containerViewButtonsMenu">{allFood}</div>;
-  }
-}
-
-class MenuLunch extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { activeButton: undefined };
-  }
-  showIngredientsWithClick(index) {
-    this.setState({ activeButton: index });
-  }
-  catchIndexButtonClicked(index) {
-    this.props.onHandleIndexButtonClickedChildren(index, "almuerzo");
-  }
-
-  render() {
-    return (
-      <div className="containerButtonsMenu">
-        <button
-          className="buttonMainMenu buttonMenu"
-          onClick={() => this.catchIndexButtonClicked(0)}
-        >
-          {Almuerzo[0].nombre}
-          <br />${Almuerzo[0].precio}
-        </button>
-        <button
-          className="buttonMainMenu buttonMenu"
-          onClick={() => this.catchIndexButtonClicked(1)}
-        >
-          {Almuerzo[1].nombre}
-          <br />${Almuerzo[1].precio}
-        </button>
-        <button
-          className="buttonSidesMenu buttonMenu"
-          onClick={() => this.catchIndexButtonClicked(2)}
-        >
-          {Almuerzo[2].nombre}
-          <br />${Almuerzo[2].precio}
-        </button>
-        <button
-          className="buttonSidesMenu buttonMenu"
-          onClick={() => this.catchIndexButtonClicked(3)}
-        >
-          {Almuerzo[3].nombre}
-          <br />${Almuerzo[3].precio}
-        </button>
-        <button
-          className="buttonDrinkMenu buttonMenu"
-          onClick={() => this.catchIndexButtonClicked(4)}
-        >
-          {Almuerzo[4].nombre}
-          <br />${Almuerzo[4].precio}
-        </button>
-        <button
-          className="buttonDrinkMenu buttonMenu"
-          onClick={() => this.catchIndexButtonClicked(5)}
-        >
-          {Almuerzo[5].nombre}
-          <br />${Almuerzo[5].precio}
-        </button>
-        <button
-          className="buttonDrinkMenu buttonMenu"
-          onClick={() => this.catchIndexButtonClicked(6)}
-        >
-          {Almuerzo[6].nombre}
-          <br />${Almuerzo[6].precio}
-        </button>
-        <button
-          className="buttonDrinkMenu buttonMenu"
-          onClick={() => this.catchIndexButtonClicked(7)}
-        >
-          {Almuerzo[7].nombre}
-          <br />${Almuerzo[7].precio}
-        </button>
-      </div>
-    );
-  }
-}
-class MenuBreakfast extends React.Component {
   catchIndexButtonClicked(index) {
     this.props.onHandleIndexButtonClicked(index, this.props.optionMenu);
   }
@@ -409,29 +326,3 @@ class MenuBreakfast extends React.Component {
     );
   }
 }
-
-// class Modal extends React.Component {
-//   render() {
-//     return (
-//       <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-//         <div className="modal-dialog">
-//           <div className="modal-content">
-//             <div className="modal-header">
-//               <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
-//               <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-//                 <span aria-hidden="true">&times;</span>
-//               </button>
-//             </div>
-//             <div className="modal-body">
-//               ...
-//             </div>
-//             <div className="modal-footer">
-//               <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-//               <button type="button" className="btn btn-primary">Save changes</button>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     )
-//   }
-// }
