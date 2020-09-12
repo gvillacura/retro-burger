@@ -1,7 +1,7 @@
 import firebase from "../firebaseConfig";
 const db = firebase.firestore();
 
-const idCurrenTime = () => {
+export const idCurrenTime = () => {
   let idDate = new Date();
   const hours = (idDate.getHours() < 10 ? "0" : "") + idDate.getHours();
   const minutes = (idDate.getMinutes() < 10 ? "0" : "") + idDate.getMinutes();
@@ -12,7 +12,7 @@ const idCurrenTime = () => {
 
 idCurrenTime();
 
-const currentDate = () => {
+export const currentDate = () => {
   let date = new Date();
 
   const day = date.getDate();
