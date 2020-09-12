@@ -1,20 +1,9 @@
 import React from "react";
 import firebase from "../firebaseConfig";
-import logo from "../media/logo.png";
 import SecondsCounter from "./Counter";
-const db = firebase.firestore();
+import {ContentHeaderKitchen} from './InitialView';
 
-class ContentHeaderKitchen extends React.Component {
-  render() {
-    return (
-      <header className="header">
-        <div className="containerLogo">
-          <img src={logo} className="logo" alt="logo" />
-        </div>
-      </header>
-    );
-  }
-}
+const db = firebase.firestore();
 
 export class Kitchen extends React.Component {
   constructor(props) {
@@ -86,7 +75,6 @@ const OrderTable = ({ children, table, valueButton, comments }) => {
       <div className="contailerEachOrderKitchen">
         <div className="tableNameCounter">
           <div className="tableNameKitchen">{table}</div>
-          {/* {<div className="counterTime" onLoad={clock()}></div>} */}
           <SecondsCounter seconds={0} />;
         </div>
 
