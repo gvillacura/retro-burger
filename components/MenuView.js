@@ -1,5 +1,5 @@
 import React from "react";
-import { ContentHeader } from "./InitialView";
+import { ContentHeader } from "./TablesView";
 import { saveOrder } from "../services/MeseroService";
 import { Almuerzo, Desayuno } from "../data/menu.json";
 import { Link } from "react-router-dom";
@@ -128,7 +128,7 @@ export class ContentMenuOrderDetail extends React.Component {
 class OrderDetail extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { comments: "" };
+    this.state = { comments: ""};
   }
 
   handleChange(event) {
@@ -195,7 +195,7 @@ class OrderDetail extends React.Component {
 class SendOrder extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { orderState: "En proceso", buttonIsDisabled: true };
+    this.state = { orderState: "En proceso", buttonIsDisabled: true, modalVisibility: false};
   }
   componentDidMount() {
     let buttonIsDisabled;
@@ -228,11 +228,14 @@ class SendOrder extends React.Component {
 
   handleClickSendOrder(orderTable, totalPrice) {
     const stateOrder = this.state.orderState;
+    this.setState({modalVisibility:true})
     saveOrder(orderTable, totalPrice, stateOrder, this.props.comments);
   }
+
   render() {
-    return (
-      <Link to="/mesero">
+    return ( 
+      <div>
+        <Modal modalVisibility={this.state.modalVisibility}/>
         <button
           className="btnSendOrder"
           disabled={this.state.buttonIsDisabled}
@@ -241,12 +244,11 @@ class SendOrder extends React.Component {
               this.props.orderToSend,
               this.props.priceToSend
             );
-            this.props.handleReset();
           }}
         >
           ENVIAR PEDIDO
         </button>
-      </Link>
+      </div>
     );
   }
 }
@@ -325,3 +327,18 @@ class Menu extends React.Component {
     );
   }
 }
+
+const Modal = ({ modalVisibility }) => {
+  const classModal = modalVisibility ? "modal display-block" : "modal display-none";
+  return (
+    <div className={classModal}>
+      <section className="modal-main">
+        <div className="containerModal">
+          <label className="textModal">Haz enviado el pedido a cocina</label>
+          <Link to="/mesero"><button className="btnModal">VOLVER</button></Link>
+        </div>
+      </section>
+    </div>
+  );
+};
+

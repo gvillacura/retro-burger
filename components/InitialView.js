@@ -1,9 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../media/logo.png";
-import bell from "../media/bell-off.png";
 
-export class ContentHeader extends React.Component {
+export class ContentHeaderKitchen extends React.Component {
   render() {
     const currentRoute = window.location.pathname;
     return (
@@ -16,13 +15,11 @@ export class ContentHeader extends React.Component {
           }
           <img src={logo} className="logo" alt="logo" />
         </div>
-        <div className="containerBellOf">
-          <img src={bell} className="bellOff" alt="bell" />
-        </div>
       </header>
     );
   }
 }
+
 
 class GoBack extends React.Component {
   render() {
@@ -31,11 +28,12 @@ class GoBack extends React.Component {
     )
   }
 }
+
 export class View extends React.Component {
   render() {
     return (
       <div style={{ backgroundColor: "#c7c2c2" }}>
-        <ContentHeader />
+        <ContentHeaderKitchen />
         <div className="containerButtonsInitial">
           <Link to="/mesero">
             <button className="buttonsInitial">Mesero</button>
